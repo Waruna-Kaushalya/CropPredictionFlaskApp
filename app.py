@@ -23,7 +23,6 @@ def predict():
     print("I was here 1")
     if request.method == 'POST':
 
-
             Rainfall = float(request.form['Rainfall'])
             MaximumTemperature = float(request.form['MaximumTemperature'])
             MinimumTemperature = float(request.form['MinimumTemperature'])
