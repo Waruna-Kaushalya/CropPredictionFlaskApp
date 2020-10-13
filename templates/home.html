@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <title>Profit Prediction</title>
+  </head>
+
+  <body>
+    <h1>
+      <div style="text-align:center"><font color="blue">Extent prediction</font></div>
+    </h1>
+    <hr>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+            <form method="POST" action="/predict">
+              <div class="form-group">
+                <label for="Rainfall">Rainfall</label>
+                <input type="text" name="Rainfall">
+
+              </div>
+
+              <div class="form-group">
+                <label for="MaximumTemperature">MaximumTemperature</label>
+                <input type="text" name="MaximumTemperature">
+
+              </div>
+
+              <div class="form-group">
+                <label for="MinimumTemperature">MinimumTemperature</label>
+                <input type="text" name="MinimumTemperature">
+
+              </div>
+
+              <div class="form-group">
+                <label for="RelativeHumidity">RelativeHumidity</label>
+                <input type="text" name="RelativeHumidity">
+
+              </div>
+
+              <div class="form-group">
+                <label for="Pressure">Pressure</label>
+                <input type="text" name="Pressure">
+
+              </div>
+              <input class='btn btn-primary' type='submit' value='Submit'>
+            </form>
+
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
