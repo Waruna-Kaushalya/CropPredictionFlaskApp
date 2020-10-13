@@ -27,8 +27,8 @@ def predict():
             District = "badulla"
             Vegetable = "Beans"
 
-            # District = String(request.form['DistrictName'])
-            # Vegetable = String(request.form['VegetableType'])
+            District = request.form['DistrictName']
+            Vegetable = request.form['VegetableType']
 
 
             Extent_District_Vege = District+"_"+Vegetable+"_Extent_Model.pkl"
