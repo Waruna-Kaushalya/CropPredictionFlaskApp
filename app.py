@@ -5,24 +5,13 @@ import pandas as pd
 import numpy as np
 
 app = Flask(__name__)
-
-mul_reg_extent = open("multipleRegression_Extent_Model.pkl", "rb")
-ml_model_extent = joblib.load(mul_reg_extent)
-
-mul_reg_production = open("multipleRegression_Production_Model.pkl", "rb")
-ml_model_production = joblib.load(mul_reg_production)
-
 @app.route("/")
 def home():
     return render_template('home.html')
 
-
 @app.route("/predict", methods=['GET', 'POST'])
 def predict():
-
-    print("I was here 1")
-    if request.method == 'POST':
-
+        if request.method == 'POST':
             Rainfall = float(request.form['Rainfall'])
             MaximumTemperature = float(request.form['MaximumTemperature'])
             MinimumTemperature = float(request.form['MinimumTemperature'])
@@ -33,6 +22,24 @@ def predict():
             pred_args_arr = np.array(pred_args)
             pred_args_arr = pred_args_arr.reshape(1, -1)
 
+            # Load models
+
+            District = "badulla"
+            Vegetable = "Beans"
+
+            # District = String(request.form['DistrictName'])
+            # Vegetable = String(request.form['VegetableType'])
+
+
+            Extent_District_Vege = District+"_"+Vegetable+"_Extent_Model.pkl"
+            Production_District_Vege = District+"_"+Vegetable+"_Production_Model.pkl"
+
+            mul_reg_extent = open(Extent_District_Vege, "rb")
+            ml_model_extent = joblib.load(mul_reg_extent)
+
+            mul_reg_production = open(Production_District_Vege, "rb")
+            ml_model_production = joblib.load(mul_reg_production)
+
             # For extent
             model_prediction_extent = ml_model_extent.predict(pred_args_arr)
             model_prediction_extent = round(float(model_prediction_extent), 2)
@@ -41,8 +48,7 @@ def predict():
             model_prediction_production = ml_model_production.predict(pred_args_arr)
             model_prediction_production = round(float(model_prediction_production), 2)
 
-
-    return render_template('predict.html', predictionExtent = model_prediction_extent,predictionProduction = model_prediction_production)
+        return render_template('predict.html', predictionExtent = model_prediction_extent, predictionProduction = model_prediction_production)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

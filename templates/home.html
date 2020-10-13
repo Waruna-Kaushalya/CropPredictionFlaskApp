@@ -3,53 +3,97 @@
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <title>Profit Prediction</title>
-  </head>
+</head>
 
-  <body>
-    <h1>
-      <div style="text-align:center"><font color="blue">Extent prediction</font></div>
-    </h1>
-    <hr>
-    <br>
-    <div class="container">
-      <div class="row">
-        <div class="col-6">
-            <form method="POST" action="/predict">
-              <div class="form-group">
-                <label for="Rainfall">Rainfall</label>
-                <input type="text" name="Rainfall">
+<body>
+  <h1>
+    <div style="text-align:center"><font color="blue">Extent prediction</font></div>
+  </h1>
+  <hr>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <form method="POST" action="/predict">
+          <div class="form-group">
+            <label for="Rainfall">Rainfall</label>
+            <input type="text" name="Rainfall">
 
-              </div>
+          </div>
 
-              <div class="form-group">
-                <label for="MaximumTemperature">MaximumTemperature</label>
-                <input type="text" name="MaximumTemperature">
+          <div class="form-group">
+            <label for="MaximumTemperature">MaximumTemperature</label>
+            <input type="text" name="MaximumTemperature">
 
-              </div>
+          </div>
 
-              <div class="form-group">
-                <label for="MinimumTemperature">MinimumTemperature</label>
-                <input type="text" name="MinimumTemperature">
+          <div class="form-group">
+            <label for="MinimumTemperature">MinimumTemperature</label>
+            <input type="text" name="MinimumTemperature">
 
-              </div>
+          </div>
 
-              <div class="form-group">
-                <label for="RelativeHumidity">RelativeHumidity</label>
-                <input type="text" name="RelativeHumidity">
+          <div class="form-group">
+            <label for="RelativeHumidity">RelativeHumidity</label>
+            <input type="text" name="RelativeHumidity">
 
-              </div>
+          </div>
 
-              <div class="form-group">
-                <label for="Pressure">Pressure</label>
-                <input type="text" name="Pressure">
+          <div class="form-group">
+            <label for="Pressure">Pressure</label>
+            <input type="text" name="Pressure">
 
-              </div>
-              <input class='btn btn-primary' type='submit' value='Submit'>
-            </form>
+          </div>
+          <input class='btn btn-primary' type='submit' value='Submit'>
 
 
-        </div>
+                    <!-- <div class="form-group">
+                      <label for="DistrictName">Choose a District:</label>
+                      <select name="DistrictName" id="DistrictName">
+                        <option value="nuwaraeliya">Nuwaraeliya</option>
+                        <option value="badulla">Badulla</option>
+                        <option value="kandy">Kandy</option>
+                        <option value="matale">Matale</option>
+                        <option value="ratnapura">Ratnapura</option>
+                      </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+                      <label for="VegetableType">Choose a vegetable type:</label>
+                      <select name="VegetableType" id="VegetableType">
+                        <option value="Beans">Beans</option>
+                        <option value="Beetroot">Beetroot</option>
+                        <option value="Carrot">Carrot</option>
+                        <option value="Knohkhol">Knohkhol</option>
+                        <option value="Leeks">Leeks</option>
+                      </select>
+
+                    </div> -->
+
+
+                    <!-- <div class="form-group">
+                      <label for="DistrictName">Rainfall</label>
+                      <input type="text" name="DistrictName">
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="VegetableType">Rainfall</label>
+                      <input type="text" name="VegetableType">
+
+                    </div> -->
+
+
+
+                    
+
+        </form>
+
+
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>
