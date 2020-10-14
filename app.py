@@ -26,7 +26,6 @@ def predict():
                 VegetableArr = json.loads(Vegetable)
 
                 predArr = [Rainfall,MaximumTemperature,MinimumTemperature,RelativeHumidity,Pressure]
-                # pred_args = predArr + VegetableArr + DistrictArr
                 pred_args = np.hstack((predArr, VegetableArr, DistrictArr))
 
                 pred_args_arr = np.array(pred_args)
