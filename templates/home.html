@@ -1,73 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <title>Crop Prediction</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Upcountry vegetable crop yield prediction</title>
 </head>
 
 <body>
   <h1>
-    <div style="text-align:center"><font color="blue">Extent prediction</font></div>
+    <div style="text-align:center"><font color="green">Extent prediction</font></div>
   </h1>
   <hr>
-  <br>
-  <div class="container">
+
+  <div class="container mt-2">
     <div class="row">
-      <div class="col-6">
-        <form method="POST" action="/predict">
-
+      <div class="col-md-4 offset-md-4">
+        <div class="card card-body">
+          <form method="POST" action="/predict" id="integerForm" class="form-horizontal"
+          data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
+          data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+          data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
           <div class="form-group">
-            <label for="DistrictName">Choose a District:</label>
-            <select name="DistrictName" id="DistrictName">
-              <option value="[1,0,0,0,0]">Badulla</option>
-              <option value="[0,1,0,0,0]">Kandy</option>
-              <option value="[0,0,1,0,0]">Matale</option>
-              <option value="[0,0,0,1,0]">Nuwaraeliya</option>
-              <option value="[0,0,0,0,1]">Ratnapura</option>
-            </select>
+
+            <div class="form-group">
+              <label for="DistrictName">Choose a District:</label><br>
+              <select name="DistrictName" id="DistrictName" class="browser-default custom-select">
+                <option value="[1,0,0,0,0]">Badulla</option>
+                <option value="[0,1,0,0,0]">Kandy</option>
+                <option value="[0,0,1,0,0]">Matale</option>
+                <option value="[0,0,0,1,0]">Nuwaraeliya</option>
+                <option value="[0,0,0,0,1]">Ratnapura</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="VegetableType">Choose a vegetable type:</label><br>
+              <select name="VegetableType" id="VegetableType" class="browser-default custom-select">
+                <option value="[1,0,0,0,0]">Beans</option>
+                <option value="[0,1,0,0,0]">Beetroot</option>
+                <option value="[0,0,1,0,0]">Carrot</option>
+                <option value="[0,0,0,1,0]">Knohkhol</option>
+                <option value="[0,0,0,0,1]">Leeks</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="Rainfall">Rainfall</label>
+              <input id='Rainfall' type="text" name="Rainfall"  class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="MaximumTemperature">MaximumTemperature</label>
+              <input type="text" name="MaximumTemperature" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="MinimumTemperature">MinimumTemperature</label>
+              <input type="text" name="MinimumTemperature" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="RelativeHumidity">RelativeHumidity</label>
+              <input type="text" name="RelativeHumidity" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="Pressure">Pressure</label>
+              <input type="text" name="Pressure" class="form-control">
+            </div>
+
+            <input class='btn btn-primary' type='submit' value='Submit'>
+
           </div>
-
-          <div class="form-group">
-            <label for="VegetableType">Choose a vegetable type:</label>
-            <select name="VegetableType" id="VegetableType">
-              <option value="[1,0,0,0,0]">Beans</option>
-              <option value="[0,1,0,0,0]">Beetroot</option>
-              <option value="[0,0,1,0,0]">Carrot</option>
-              <option value="[0,0,0,1,0]">Knohkhol</option>
-              <option value="[0,0,0,0,1]">Leeks</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="Rainfall">Rainfall</label>
-            <input type="text" name="Rainfall">
-          </div>
-
-          <div class="form-group">
-            <label for="MaximumTemperature">MaximumTemperature</label>
-            <input type="text" name="MaximumTemperature">
-          </div>
-
-          <div class="form-group">
-            <label for="MinimumTemperature">MinimumTemperature</label>
-            <input type="text" name="MinimumTemperature">
-          </div>
-
-          <div class="form-group">
-            <label for="RelativeHumidity">RelativeHumidity</label>
-            <input type="text" name="RelativeHumidity">
-          </div>
-
-          <div class="form-group">
-            <label for="Pressure">Pressure</label>
-            <input type="text" name="Pressure">
-          </div>
-
-          <input class='btn btn-primary' type='submit' value='Submit'>
-
         </form>
       </div>
     </div>
   </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+<script>
+bootstrapValidate('#input', 'numeric:Please only enter numeric characters!')
+bootstrapValidate('#Pressure', 'numeric:Please only enter numeric characters!')
+</script>
 </body>
 </html>
