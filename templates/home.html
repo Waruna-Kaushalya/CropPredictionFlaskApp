@@ -16,24 +16,15 @@
       <div class="col-6">
         <form method="POST" action="/predict">
 
-          <!-- <div class="form-group">
-            <label for="DistrictName">DistrictName</label>
-            <input type="text" name="DistrictName">
-          </div>
-
-          <div class="form-group">
-            <label for="VegetableType">VegetableType</label>
-            <input type="text" name="VegetableType">
-          </div> -->
-
           <div class="form-group">
             <label for="DistrictName">Choose a District:</label>
             <select name="DistrictName" id="DistrictName">
-              <option value="nuwaraeliya">Nuwaraeliya</option>
-              <option value="badulla">Badulla</option>
-              <option value="kandy">Kandy</option>
-              <option value="matale">Matale</option>
-              <option value="ratnapura">Ratnapura</option>
+
+              <option value="[1,0,0,0,0]">Badulla</option>
+              <option value="[0,1,0,0,0]">Kandy</option>
+              <option value="[0,0,1,0,0]">Matale</option>
+              <option value="[0,0,0,1,0]">Nuwaraeliya</option>
+              <option value="[0,0,0,0,1]">Ratnapura</option>
             </select>
           </div>
 
@@ -41,11 +32,11 @@
           <div class="form-group">
             <label for="VegetableType">Choose a vegetable type:</label>
             <select name="VegetableType" id="VegetableType">
-              <option value="Beans">Beans</option>
-              <option value="Beetroot">Beetroot</option>
-              <option value="Carrot">Carrot</option>
-              <option value="Knohkhol">Knohkhol</option>
-              <option value="Leeks">Leeks</option>
+              <option value="[1,0,0,0,0]">Beans</option>
+              <option value="[0,1,0,0,0]">Beetroot</option>
+              <option value="[0,0,1,0,0]">Carrot</option>
+              <option value="[0,0,0,1,0]">Knohkhol</option>
+              <option value="[0,0,0,0,1]">Leeks</option>
             </select>
           </div>
 
