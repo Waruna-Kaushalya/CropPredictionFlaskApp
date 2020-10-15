@@ -1,86 +1,383 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script> -->
+
+
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
+    id="bootstrap-css"> <!-- fixed broken link -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/css/bootstrapvalidator.min.css"
+    rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+
   <title>Upcountry vegetable crop yield prediction</title>
 </head>
 
 <body>
   <h1>
-    <div style="text-align:center"><font color="green">Extent prediction</font></div>
+    <div style="text-align:center">
+      <font color="green">Extent prediction</font>
+    </div>
   </h1>
   <hr>
-
-  <div class="container mt-2">
+  <!-- <div class="container mt-2">
     <div class="row">
       <div class="col-md-4 offset-md-4">
         <div class="card card-body">
-          <form method="POST" action="/predict" id="integerForm" class="form-horizontal"
-          data-bv-feedbackicons-valid="glyphicon glyphicon-ok"
-          data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
-          data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
-          <div class="form-group">
+          <form method="POST" action="/predict" id="integerForm" class="needs-validation">
+
 
             <div class="form-group">
-              <label for="DistrictName">Choose a District:</label><br>
-              <select name="DistrictName" id="DistrictName" class="browser-default custom-select">
-                <option value="[1,0,0,0,0]">Badulla</option>
-                <option value="[0,1,0,0,0]">Kandy</option>
-                <option value="[0,0,1,0,0]">Matale</option>
-                <option value="[0,0,0,1,0]">Nuwaraeliya</option>
-                <option value="[0,0,0,0,1]">Ratnapura</option>
-              </select>
+              <div class="form-group">
+                <label for="DistrictName">Choose a District:</label><br>
+                <select name="DistrictName" id="DistrictName" class="browser-default custom-select">
+                  <option value="[1,0,0,0,0]">Badulla</option>
+                  <option value="[0,1,0,0,0]">Kandy</option>
+                  <option value="[0,0,1,0,0]">Matale</option>
+                  <option value="[0,0,0,1,0]">Nuwaraeliya</option>
+                  <option value="[0,0,0,0,1]">Ratnapura</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="VegetableType">Choose a vegetable type:</label><br>
+                <select name="VegetableType" id="VegetableType" class="browser-default custom-select">
+                  <option value="[1,0,0,0,0]">Beans</option>
+                  <option value="[0,1,0,0,0]">Beetroot</option>
+                  <option value="[0,0,1,0,0]">Carrot</option>
+                  <option value="[0,0,0,1,0]">Knohkhol</option>
+                  <option value="[0,0,0,0,1]">Leeks</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="Rainfall">Rainfall</label>
+                <div class="form-group">
+                  <input id='rainfall' type="text" name="Rainfall" class="form-control">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="MaximumTemperature">MaximumTemperature</label>
+                <input type="text" name="MaximumTemperature" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="MinimumTemperature">MinimumTemperature</label>
+                <input type="text" name="MinimumTemperature" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="RelativeHumidity">RelativeHumidity</label>
+                <input type="text" name="RelativeHumidity" class="form-control">
+              </div>
+
+              <div class="form-group">
+                <label for="Pressure">Pressure</label>
+                <input type="text" name="Pressure" class="form-control">
+              </div>
+
+              <input class='btn btn-primary' type='submit' value='Submit'>
+
+            </div>
+          </form>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+
+
+  <!-- <div class="card card-body">
+  <div id="wrapper">
+
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <!-- Page Heading -->
+  <!-- <div class="row" id="main">
+
+          <form class="form-horizontal" method="POST" action="/predict" id="integerForm">
+
+
+
+
+            <div class="form-group">
+              <div class="form-group">
+                <label for="DistrictName">Choose a District:</label><br>
+                <select name="DistrictName" id="DistrictName" class="browser-default custom-select">
+                  <option value="[1,0,0,0,0]">Badulla</option>
+                  <option value="[0,1,0,0,0]">Kandy</option>
+                  <option value="[0,0,1,0,0]">Matale</option>
+                  <option value="[0,0,0,1,0]">Nuwaraeliya</option>
+                  <option value="[0,0,0,0,1]">Ratnapura</option>
+                </select>
+              </div>
+            </div>
+
+              <div class="form-group">
+                <label for="VegetableType">Choose a vegetable type:</label><br>
+                <select name="VegetableType" id="VegetableType" class="browser-default custom-select">
+                  <option value="[1,0,0,0,0]">Beans</option>
+                  <option value="[0,1,0,0,0]">Beetroot</option>
+                  <option value="[0,0,1,0,0]">Carrot</option>
+                  <option value="[0,0,0,1,0]">Knohkhol</option>
+                  <option value="[0,0,0,0,1]">Leeks</option>
+                </select>
+              </div>
+            </div>  -->
+
+
+  <!-- <div class="form-group">
+              <label class="col-sm-3 control-label">Rainfall</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="Rainfall" />
+              </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Maximum Temperature</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="MaximumTemperature" />
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="VegetableType">Choose a vegetable type:</label><br>
-              <select name="VegetableType" id="VegetableType" class="browser-default custom-select">
-                <option value="[1,0,0,0,0]">Beans</option>
+              <label class="col-sm-3 control-label">Minimum Temperature</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="MinimumTemperature" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Relative Humidity</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="RelativeHumidity" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Pressure</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="Pressure" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-9 col-sm-offset-3">
+                <input class='btn btn-primary' type='submit' value='Submit'>
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <!-- /#page-wrapper -->
+  <!-- </div><!-- /#wrapper -->
+  <!-- </div>
+  </div> -->
+  <!-- </div>  -->
+
+
+  <!-- <div class="form-group">
+    <label class="col-sm-3 control-label">Rainfall</label>
+    <div class="col-sm-5">
+      <input type="text" class="form-control" name="ABC" />
+    </div>
+  </div> -->
+
+
+  <div id="wrapper">
+
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="row" id="main">
+
+          <form id="containerForm" class="form-horizontal" method="POST" action="/predict">
+
+
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="DistrictName">Choose a District:</label>
+              <div class="col-sm-5">
+                <select name="DistrictName" id="DistrictName" class="form-control">
+                  <option value="[1,0,0,0,0]">Badulla</option>
+                  <option value="[0,1,0,0,0]">Kandy</option>
+                  <option value="[0,0,1,0,0]">Matale</option>
+                  <option value="[0,0,0,1,0]">Nuwaraeliya</option>
+                  <option value="[0,0,0,0,1]">Ratnapura</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="VegetableType">Choose a vegetable type:</label>
+              <div class="col-sm-5">
+                <select name="VegetableType" id="VegetableType" class="form-control">
+                  <option value="[1,0,0,0,0]">Beans</option>
                 <option value="[0,1,0,0,0]">Beetroot</option>
                 <option value="[0,0,1,0,0]">Carrot</option>
                 <option value="[0,0,0,1,0]">Knohkhol</option>
                 <option value="[0,0,0,0,1]">Leeks</option>
-              </select>
+                </select>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Rainfall</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="Rainfall" />
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="Rainfall">Rainfall</label>
-              <input id='Rainfall' type="text" name="Rainfall"  class="form-control">
+              <label class="col-sm-3 control-label">Maximum Temperature</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="MaximumTemperature" />
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Minimum Temperature</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="MinimumTemperature" />
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="MaximumTemperature">MaximumTemperature</label>
-              <input type="text" name="MaximumTemperature" class="form-control">
+              <label class="col-sm-3 control-label">Relative Humidity</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="RelativeHumidity" />
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="MinimumTemperature">MinimumTemperature</label>
-              <input type="text" name="MinimumTemperature" class="form-control">
+              <label class="col-sm-3 control-label">Pressure</label>
+              <div class="col-sm-5">
+                <input type="text" class="form-control" name="Pressure" />
+              </div>
             </div>
+
+
+            
 
             <div class="form-group">
-              <label for="RelativeHumidity">RelativeHumidity</label>
-              <input type="text" name="RelativeHumidity" class="form-control">
+              <div class="col-sm-9 col-sm-offset-3">
+                <!-- <button type="submit" class="btn btn-default">Validate</button> -->
+                <input class='btn btn-primary' type='submit' value='Submit'></button>
+              </div>
             </div>
-
-            <div class="form-group">
-              <label for="Pressure">Pressure</label>
-              <input type="text" name="Pressure" class="form-control">
-            </div>
-
-            <input class='btn btn-primary' type='submit' value='Submit'>
-
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+        <!-- /#page-wrapper -->
+      </div><!-- /#wrapper -->
     </div>
   </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
-<script>
-bootstrapValidate('#input', 'numeric:Please only enter numeric characters!')
-bootstrapValidate('#Pressure', 'numeric:Please only enter numeric characters!')
-</script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#containerForm').bootstrapValidator({
+        container: 'tooltip',
+        feedbackIcons: {
+          valid: 'glyphicon glyphicon-ok',
+          invalid: 'glyphicon glyphicon-remove',
+          validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+
+          Rainfall: {
+            validators: {
+              numeric: {
+                message: 'Please enter numeric values only'
+              },
+              notEmpty: {
+                message: '* Field is required'
+              }
+            }
+          },
+
+          MaximumTemperature: {
+            validators: {
+              numeric: {
+                message: 'Please enter numeric values only'
+              },
+              notEmpty: {
+                message: '* Field is required'
+              }
+            }
+          },
+
+          MinimumTemperature: {
+            validators: {
+              numeric: {
+                message: 'Please enter numeric values only'
+              },
+              notEmpty: {
+                message: '* Field is required'
+              }
+            }
+          },
+
+          RelativeHumidity: {
+            validators: {
+              numeric: {
+                message: 'Please enter numeric values only'
+              },
+              notEmpty: {
+                message: '* Field is required'
+              }
+            }
+          },
+
+          Pressure: {
+            validators: {
+              numeric: {
+                message: 'Please enter numeric values only'
+              },
+              notEmpty: {
+                message: '* Field is required'
+              }
+            }
+          }
+
+          
+        }
+      });
+    });
+
+
+  </script>
 </body>
+
 </html>
