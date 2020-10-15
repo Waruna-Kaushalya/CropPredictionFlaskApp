@@ -3,17 +3,21 @@
 
 <head>
 
+  
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
-    id="bootstrap-css"> 
-  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/css/bootstrapvalidator.min.css"
-    rel="stylesheet"> -->
-  <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  <title>Upcountry vegetable crop yield prediction</title>
 
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
+    id="bootstrap-css"> <!-- fixed broken link -->
+    
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/css/bootstrapvalidator.min.css"
+    rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+
+  <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+ 
   <title>Upcountry vegetable crop yield prediction</title>
 </head>
 
@@ -101,84 +105,15 @@
             </div>
           </form>
         </div>
-        <!-- /#page-wrapper -->
-      </div><!-- /#wrapper -->
+
+      </div>
     </div>
   </div>
 
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $('#containerForm').bootstrapValidator({
-        container: 'tooltip',
-        feedbackIcons: {
-          valid: 'glyphicon glyphicon-ok',
-          invalid: 'glyphicon glyphicon-remove',
-          validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
+  <script type="text/javascript"
+         src="{{ url_for('static', filename='validatorcustomescript.js') }}"></script>
+         <script type="text/javascript"
+         src="{{ url_for('static', filename='bootstrapvalidator.js') }}"></script>
 
-          Rainfall: {
-            validators: {
-              numeric: {
-                message: 'Please enter numeric values only'
-              },
-              notEmpty: {
-                message: '* Field is required'
-              }
-            }
-          },
-
-          MaximumTemperature: {
-            validators: {
-              numeric: {
-                message: 'Please enter numeric values only'
-              },
-              notEmpty: {
-                message: '* Field is required'
-              }
-            }
-          },
-
-          MinimumTemperature: {
-            validators: {
-              numeric: {
-                message: 'Please enter numeric values only'
-              },
-              notEmpty: {
-                message: '* Field is required'
-              }
-            }
-          },
-
-          RelativeHumidity: {
-            validators: {
-              numeric: {
-                message: 'Please enter numeric values only'
-              },
-              notEmpty: {
-                message: '* Field is required'
-              }
-            }
-          },
-
-          Pressure: {
-            validators: {
-              numeric: {
-                message: 'Please enter numeric values only'
-              },
-              notEmpty: {
-                message: '* Field is required'
-              }
-            }
-          }
-
-
-        }
-      });
-    });
-
-
-  </script>
 </body>
-
 </html>
