@@ -3,21 +3,19 @@
 
 <head>
 
-  
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
 
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
-    id="bootstrap-css"> <!-- fixed broken link -->
-    
+    id="bootstrap-css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/css/bootstrapvalidator.min.css"
     rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
-
-  <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
- 
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style2.css') }}">
+
   <title>Upcountry vegetable crop yield prediction</title>
 </head>
 
@@ -60,60 +58,70 @@
               </div>
             </div>
 
-
             <div class="form-group">
               <label class="col-sm-3 control-label">Rainfall</label>
               <div class="col-sm-5">
-                <input type="text" class="form-control" name="Rainfall" />
+                <div class="input-group">
+                  <input type="text" class="form-control" name="Rainfall" />
+                  <span class="input-group-addon">kg/m2</span>
+                </div>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-sm-3 control-label">Maximum Temperature</label>
               <div class="col-sm-5">
-                <input type="text" class="form-control" name="MaximumTemperature" />
+                <div class="input-group">
+                  <input type="text" class="form-control" name="MaximumTemperature" />
+                  <span class="input-group-addon">c</span>
+                </div>
               </div>
             </div>
-
 
             <div class="form-group">
               <label class="col-sm-3 control-label">Minimum Temperature</label>
               <div class="col-sm-5">
-                <input type="text" class="form-control" name="MinimumTemperature" />
+                <div class="input-group">
+                  <input type="text" class="form-control" name="MinimumTemperature" />
+                  <span class="input-group-addon">c</span>
+                </div>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-sm-3 control-label">Relative Humidity</label>
               <div class="col-sm-5">
-                <input type="text" class="form-control" name="RelativeHumidity" />
+                <div class="input-group">
+                  <input type="text" class="form-control" name="RelativeHumidity" />
+                  <span class="input-group-addon">%</span>
+                </div>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-sm-3 control-label">Pressure</label>
               <div class="col-sm-5">
-                <input type="text" class="form-control" name="Pressure" />
+                <div class="input-group">
+                  <input type="text" class="form-control" name="Pressure" />
+                  <span class="input-group-addon">kPa</span>
+                </div>
               </div>
             </div>
 
             <div class="form-group">
               <div class="col-sm-9 col-sm-offset-3">
-
                 <input class='btn btn-primary' type='submit' value='Submit'></button>
               </div>
             </div>
+            
           </form>
         </div>
-
       </div>
     </div>
   </div>
 
-  <script type="text/javascript"
-         src="{{ url_for('static', filename='validatorcustomescript.js') }}"></script>
-         <script type="text/javascript"
-         src="{{ url_for('static', filename='bootstrapvalidator.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='validatorcustomescript.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='bootstrapvalidator.js') }}"></script>
 
 </body>
 </html>
