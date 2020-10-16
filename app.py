@@ -14,7 +14,7 @@ def home():
 def predict():
         if request.method == 'POST':
             try:
-                Rainfall = float(request.form['Rainfall'])
+                Rainfall = (float(request.form['Rainfall']))*0.01
                 MaximumTemperature = float(request.form['MaximumTemperature'])
                 MinimumTemperature = float(request.form['MinimumTemperature'])
                 RelativeHumidity = float(request.form['RelativeHumidity'])
