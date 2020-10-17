@@ -14,7 +14,7 @@ def home():
 def predict():
         if request.method == 'POST':
             try:
-                Rainfall = (float(request.form['Rainfall']))*0.01
+                Rainfall = float(request.form['Rainfall'])
                 MaximumTemperature = float(request.form['MaximumTemperature'])
                 MinimumTemperature = float(request.form['MinimumTemperature'])
                 RelativeHumidity = float(request.form['RelativeHumidity'])
@@ -47,7 +47,7 @@ def predict():
             except ValueError:
                 return "Please check if the values are entered correctly"
 
-        return render_template('predict.html', predictionExtent = model_prediction_extent, predictionProduction = model_prediction_production)
+        return render_template('home.html', predictionExtent = model_prediction_extent, predictionProduction = model_prediction_production)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

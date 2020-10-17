@@ -22,12 +22,11 @@
 <body>
   <h1>
     <div style="text-align:center">
-      <font color="green">Extent prediction</font>
+      <h1 style="color:green;">Extent prediction</H1>
     </div>
   </h1>
   <hr>
   <div id="wrapper">
-
     <div id="page-wrapper">
       <div class="container-fluid">
         <div class="row" id="main">
@@ -114,14 +113,39 @@
               </div>
             </div>
 
+            <br>
+            <br>
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Extent</label>
+              <div class="col-sm-5">
+                <div class="input-group">
+                  <label for="Extent" class="form-control">{{predictionExtent}}</label>
+                  <span class="input-group-addon">Ht</span>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-sm-3 control-label">Production</label>
+              <div class="col-sm-5">
+                <div class="input-group">
+                  <label for="Extent" class="form-control">{{predictionProduction}}</label>
+                  <span class="input-group-addon">Mt</span>
+                </div>
+              </div>
+            </div>
           </form>
         </div>
       </div>
     </div>
   </div>
 
+
   <script type="text/javascript" src="{{ url_for('static', filename='validatorcustomescript.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='bootstrapvalidator.js') }}"></script>
 
 </body>
+
 </html>
