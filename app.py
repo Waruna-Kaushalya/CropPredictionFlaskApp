@@ -45,7 +45,7 @@ def predict():
                 model_prediction_production = ml_model_production.predict(pred_args_arr)
                 model_prediction_production = round(float(model_prediction_production), 2)
             except ValueError:
-                return "Please check if the values are entered correctly"
+                return "Please check if the values are entered correctly or notgi"
 
         return render_template('home.html', predictionExtent = model_prediction_extent, predictionProduction = model_prediction_production)
 
