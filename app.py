@@ -4,6 +4,7 @@ import requests
 import pandas as pd
 import numpy as np
 import json
+# import model
 
 app = Flask(__name__)
 @app.route("/")
@@ -21,7 +22,6 @@ def predict():
                 Pressure = float(request.form['Pressure'])
                 District = request.form['DistrictName']
                 Vegetable = request.form['VegetableType']
-
                 DistrictArr = json.loads(District)
                 VegetableArr = json.loads(Vegetable)
 
@@ -38,16 +38,29 @@ def predict():
                 ml_model_production = joblib.load(mul_reg_production)
 
                 # For extent
-                model_prediction_extent = ml_model_extent.predict(pred_args_arr)
-                model_prediction_extent = round(float(model_prediction_extent), 2)
+                extentPrediction = ml_model_extent.predict(pred_args_arr)
+                extentPrediction = round(float(extentPrediction), 2)
 
                 # For Production
-                model_prediction_production = ml_model_production.predict(pred_args_arr)
-                model_prediction_production = round(float(model_prediction_production), 2)
+                productionPrediction = ml_model_production.predict(pred_args_arr)
+                productionPrediction = round(float(productionPrediction), 2)
+
+            except:
+                return "Please check if the values are entered correctly or not"
+
+            return render_template('home.html', extentPrediction = extentPrediction, predictionProduction = productionPrediction)
+
+
+@app.route("/train", methods=['GET', 'POST'])
+def train():
+        if request.method == 'POST':
+            try:
+                import model
             except ValueError:
-                return "Please check if the values are entered correctly or notgi"
+                return "Please check if the values are entered correctly or not"
+        return render_template('home.html', modelTrain = True)
 
-        return render_template('home.html', predictionExtent = model_prediction_extent, predictionProduction = model_prediction_production)
 
+#Create local server and run the app in that server
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

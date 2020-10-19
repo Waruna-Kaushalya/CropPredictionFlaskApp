@@ -120,12 +120,11 @@
               <label class="col-sm-3 control-label">Extent</label>
               <div class="col-sm-5">
                 <div class="input-group">
-                  <label for="Extent" class="form-control">{{predictionExtent}}</label>
+                  <label for="Extent" class="form-control">{{extentPrediction}}</label>
                   <span class="input-group-addon">Ht</span>
                 </div>
               </div>
             </div>
-
 
             <div class="form-group">
               <label class="col-sm-3 control-label">Production</label>
@@ -142,6 +141,37 @@
     </div>
   </div>
 
+  <div id="wrapper">
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="row" id="main">
+          <form id="containerForm" class="form-horizontal" method="POST" action="/train">
+
+            <div class="form-group">
+              <div class="col-sm-9 col-sm-offset-3">
+                <input class='btn btn-primary' type='submit' value='Train' </button>
+              </div>
+
+            </div>
+            <!-- <form method="POST" action="/upload" enctype="multipart/form-data">
+              <input type="file" name="file">
+              <input type="submit">
+            </form> -->
+
+
+        </div>
+      </div>
+
+
+      </form>
+
+
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <!--  -->
   <script type="text/javascript" src="{{ url_for('static', filename='validatorcustomescript.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='bootstrapvalidator.js') }}"></script>
 

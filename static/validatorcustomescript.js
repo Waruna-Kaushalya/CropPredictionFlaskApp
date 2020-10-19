@@ -43,12 +43,22 @@ $(document).ready(function () {
 
       RelativeHumidity: {
         validators: {
+
+          between: {
+            min: 0,
+            max: 100,
+            message: 'The number must be between 0 and 100'
+          },
+
           numeric: {
             message: 'Please enter numeric values only'
           },
+
           notEmpty: {
             message: '* Field is required'
-          }
+          },
+
+          
         }
       },
 
