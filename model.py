@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 
-import boto3
+
 
 from sklearn import metrics
 from sklearn.metrics import r2_score
@@ -14,10 +14,21 @@ from sklearn.model_selection import train_test_split
 import joblib
 
 
-client = boto3.client('s3')
-path = 's3://flask-s3-crop/VegetableAndClimateData.csv'
 
-dataset = pd.read_csv(path)
+
+import boto3
+
+
+s3 = boto3.client('s3')
+obj = s3.get_object(Bucket='flask-s3-crop', Key='ASIA4YEQCWGSKKYQJWEW')
+dataset = pd.read_csv(obj['s3://flask-s3-crop/VegetableAndClimateData.csv'])
+
+
+
+# client = boto3.client('s3')
+# path = 's3://flask-s3-crop/VegetableAndClimateData.csv'
+
+# dataset = pd.read_csv(path)
 # Importing the dataset
 # dataset = pd.read_csv("VegetableAndClimateData.csv")
 
