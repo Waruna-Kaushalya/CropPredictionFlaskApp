@@ -4,12 +4,28 @@ import requests
 import pandas as pd
 import numpy as np
 import json
+
+from werkzeug.utils import secure_filename
+import boto3
+
 # import model
+
+s3 = boto3.client('s3',
+                    aws_access_key_id="ASIA4YEQCWGSKKYQJWEW",
+                    aws_secret_access_key= "tY1etzKZCuVBbBZ3V0zpp1RT62allC4WGm62KWta",
+                    aws_session_token="FwoGZXIvYXdzEB0aDLnjOxpwwXlJkWP93CKCAVArCdLWk1/cj1BWlSYExRQPJdmuksPFMUrU8NlUZJJqmlquk/otQ1Y211NrtNmSiapGS1CzFaD5/x//dUFWKXveM7VZrVJ+FkDe9y35mjWw1vsf3NGCmqA/yIwcffVrxGMPOJIyRvPQI1Pf3DK9/jCx0ouaD+wmdr0uue2GdoZE7zgoubm5/AUyKMwuGqjDPa6TjQy9fLYd4tb19urTseLp+slK+0F/2LevicZOXbdu7y0="
+                     )
+
+
+BUCKET_NAME='flask-s3-crop'
 
 app = Flask(__name__)
 @app.route("/")
 def home():
     return render_template('home.html')
+
+
+
 
 @app.route("/predict", methods=['GET', 'POST'])
 def predict():
@@ -58,7 +74,27 @@ def train():
                 import model
             except ValueError:
                 return "Please check if the values are entered correctly or not"
-        return render_template('home.html', modelTrain = True)
+        return render_template('home.html', modelTrain = "Model is trained")
+
+
+@app.route('/upload',methods=['POST'])
+
+def upload():
+    print("abc")
+    if request.method == 'POST':
+        img = request.files['file']
+        msg = "nt ! "
+        if img:
+                filename = secure_filename(img.filename)
+                img.save(filename)
+                s3.upload_file(
+                    Bucket = BUCKET_NAME,
+                    Filename=filename,
+                    Key = filename
+                )
+                msg = "Upload Done ! "
+
+    return render_template('home.html', msg = "File uploaded to AWS")
 
 
 #Create local server and run the app in that server
