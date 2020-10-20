@@ -2,8 +2,6 @@
 import numpy as np
 import pandas as pd
 
-
-
 from sklearn import metrics
 from sklearn.metrics import r2_score
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
@@ -13,22 +11,13 @@ from sklearn.model_selection import train_test_split
 # import sklearn.external.joblib as extjoblib
 import joblib
 
-
-
-
 import boto3
 
+client = boto3.client('s3')
+path = 's3://flask-s3-crop/VegetableAndClimateData.csv'
 
-s3 = boto3.client('s3')
-obj = s3.get_object(Bucket='flask-s3-crop', Key='ASIA4YEQCWGSKKYQJWEW')
-dataset = pd.read_csv(obj['s3://flask-s3-crop/VegetableAndClimateData.csv'])
+dataset = pd.read_csv(path)
 
-
-
-# client = boto3.client('s3')
-# path = 's3://flask-s3-crop/VegetableAndClimateData.csv'
-
-# dataset = pd.read_csv(path)
 # Importing the dataset
 # dataset = pd.read_csv("VegetableAndClimateData.csv")
 

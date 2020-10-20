@@ -77,7 +77,7 @@ def train():
             try:
                 import model
             except ValueError:
-                 return render_template('home.html', modelTrain = "err")
+                return render_template('home.html', modelTrain = "err")
         return render_template('home.html', modelTrain = "Model is trained")
 
 
