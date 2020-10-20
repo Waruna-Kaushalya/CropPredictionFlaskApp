@@ -10,13 +10,20 @@ from sklearn.model_selection import train_test_split
 
 # import sklearn.external.joblib as extjoblib
 import joblib
-
 import boto3
+
+s3 = boto3.client('s3',
+    aws_access_key_id="ASIA4YEQCWGSKKYQJWEW",
+    aws_secret_access_key="tY1etzKZCuVBbBZ3V0zpp1RT62allC4WGm62KWta",
+    region_name="ap-southeast-1")
+
+ 
+
 
 client = boto3.client('s3')
 path = 's3://flask-s3-crop/VegetableAndClimateData.csv'
-
 dataset = pd.read_csv(path)
+
 
 # Importing the dataset
 # dataset = pd.read_csv("VegetableAndClimateData.csv")
