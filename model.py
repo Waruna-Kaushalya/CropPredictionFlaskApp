@@ -12,17 +12,35 @@ from sklearn.model_selection import train_test_split
 import joblib
 import boto3
 
+import os
+from io import StringIO
+client = boto3.client('s3', aws_access_key_id="AKIA4YEQCWGSPB2C4OGT", aws_secret_access_key="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")
+bucket_name = 'flask-s3-crop'
+object_key = 'VegetableAndClimateData.csv'
+csv_obj = client.get_object(Bucket=bucket_name, Key=object_key)
+body = csv_obj['Body']
+csv_string = body.read().decode('utf8')
+csv_string
+dataset = pd.read_csv(StringIO(csv_string))
+
 # s3 = boto3.client('s3', aws_access_key_id="ASIA4YEQCWGSKKYQJWEW", aws_secret_access_key="tY1etzKZCuVBbBZ3V0zpp1RT62allC4WGm62KWta", region_name="ap-southeast-1")
 
-session = boto3.Session( aws_access_key_id="ASIA4YEQCWGSKKYQJWEW", aws_secret_access_key="tY1etzKZCuVBbBZ3V0zpp1RT62allC4WGm62KWta")
 
-s3 = session.resource('s3')
+# client = boto3.client('s3')
+# path = 's3://flask-s3-crop/VegetableAndClimateData.csv'
+# dataset = pd.read_csv(path)
 
 
-client = boto3.client('s3')
-path = 'VegetableAndClimateData.csv'
-dataset = pd.read_csv(path)
 
+# aws_key = 'ASIA4YEQCWGSKKYQJWEW'
+# aws_secret = 'tY1etzKZCuVBbBZ3V0zpp1RT62allC4WGm62KWta'
+
+# bucket_name = 'flask-s3-crop'
+# object_key = 'VegetableAndClimateData.csv'
+
+# path = 's3://{}:{}@{}/{}'.format(aws_key, aws_secret, bucket_name, object_key)
+
+# dataset = pd.read_csv(path)
 
 # Importing the dataset
 # dataset = pd.read_csv("VegetableAndClimateData.csv")
