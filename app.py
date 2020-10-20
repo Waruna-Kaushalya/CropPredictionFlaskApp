@@ -103,4 +103,4 @@ def upload():
 
 #Create local server and run the app in that server
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run()
