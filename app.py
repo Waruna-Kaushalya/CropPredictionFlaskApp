@@ -25,12 +25,6 @@ s3 = boto3.client('s3',
 
 BUCKET_NAME='flask-s3-crop'
 
-
-
-
-
-
-
 @app.route("/predict", methods=['GET', 'POST'])
 def predict():
         if request.method == 'POST':
@@ -77,7 +71,7 @@ def train():
             try:
                 import model
             except ValueError:
-                return render_template('home.html', modelTrain = "err")
+                return render_template('home.html', modelTrain = "Model is not trained")
         return render_template('home.html', modelTrain = "Model is trained")
 
 
@@ -87,7 +81,6 @@ def upload():
     print("abc")
     if request.method == 'POST':
         img = request.files['file']
-        msg = "nt ! "
         if img:
                 filename = secure_filename(img.filename)
                 img.save(filename)
@@ -97,8 +90,6 @@ def upload():
                     Key = filename
                 )
                 return render_template('home.html', msg = "File uploaded to AWS")
-
-    return render_template('home.html', msg = "File uploaded to AWS")
 
 
 #Create local server and run the app in that server

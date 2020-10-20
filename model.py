@@ -1,6 +1,10 @@
 # Importing the libraries
 import numpy as np
 import pandas as pd
+import joblib
+import boto3
+import os
+from io import StringIO
 
 from sklearn import metrics
 from sklearn.metrics import r2_score
@@ -8,42 +12,14 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
-# import sklearn.external.joblib as extjoblib
-import joblib
-import boto3
-
-import os
-from io import StringIO
+# read aws csv file
 client = boto3.client('s3', aws_access_key_id="AKIA4YEQCWGSPB2C4OGT", aws_secret_access_key="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")
 bucket_name = 'flask-s3-crop'
 object_key = 'VegetableAndClimateData.csv'
 csv_obj = client.get_object(Bucket=bucket_name, Key=object_key)
 body = csv_obj['Body']
 csv_string = body.read().decode('utf8')
-csv_string
 dataset = pd.read_csv(StringIO(csv_string))
-
-# s3 = boto3.client('s3', aws_access_key_id="ASIA4YEQCWGSKKYQJWEW", aws_secret_access_key="tY1etzKZCuVBbBZ3V0zpp1RT62allC4WGm62KWta", region_name="ap-southeast-1")
-
-
-# client = boto3.client('s3')
-# path = 's3://flask-s3-crop/VegetableAndClimateData.csv'
-# dataset = pd.read_csv(path)
-
-
-
-# aws_key = 'ASIA4YEQCWGSKKYQJWEW'
-# aws_secret = 'tY1etzKZCuVBbBZ3V0zpp1RT62allC4WGm62KWta'
-
-# bucket_name = 'flask-s3-crop'
-# object_key = 'VegetableAndClimateData.csv'
-
-# path = 's3://{}:{}@{}/{}'.format(aws_key, aws_secret, bucket_name, object_key)
-
-# dataset = pd.read_csv(path)
-
-# Importing the dataset
-# dataset = pd.read_csv("VegetableAndClimateData.csv")
 
 dummies_VegetableType = pd.get_dummies(dataset.VegetableType)
 dummies_VegetableType
@@ -84,7 +60,7 @@ y_pred = modelExtent.predict(X_test)
 # Predicting the Test set results of Production model
 z_pred = modelProduction.predict(XZ_test)
 
-#Random Forest Extent model Accurecy
+# Random Forest Extent model Accurecy
 # print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
 # print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
 # print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
