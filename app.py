@@ -77,7 +77,7 @@ def train():
             try:
                 import model
             except ValueError:
-                return "Please check if the values are entered correctly or not"
+                 return render_template('home.html', modelTrain = "err")
         return render_template('home.html', modelTrain = "Model is trained")
 
 
@@ -96,7 +96,7 @@ def upload():
                     Filename=filename,
                     Key = filename
                 )
-                msg = "Upload Done ! "
+                return render_template('home.html', msg = "File uploaded to AWS")
 
     return render_template('home.html', msg = "File uploaded to AWS")
 
