@@ -10,6 +10,12 @@ import boto3
 
 # import model
 
+
+app = Flask(__name__)
+@app.route("/")
+def home():
+    return render_template('home.html')
+
 s3 = boto3.client('s3',
                     aws_access_key_id="ASIA4YEQCWGSKKYQJWEW",
                     aws_secret_access_key= "tY1etzKZCuVBbBZ3V0zpp1RT62allC4WGm62KWta",
@@ -19,10 +25,8 @@ s3 = boto3.client('s3',
 
 BUCKET_NAME='flask-s3-crop'
 
-app = Flask(__name__)
-@app.route("/")
-def home():
-    return render_template('home.html')
+
+
 
 
 
