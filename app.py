@@ -60,9 +60,9 @@ def predict():
                 productionPrediction = round(float(productionPrediction), 2)
 
             except:
-                return "Please check if the values are entered correctly or not"
+                return render_template('home.html', predictServerMsg = "Please upload csv file and train the model")
 
-            return render_template('home.html', extentPrediction = extentPrediction, predictionProduction = productionPrediction)
+            return render_template('home.html', extentPrediction = extentPrediction, predictionProduction = productionPrediction, predictServerMsg="Prediction done")
 
 
 @app.route("/train", methods=['GET', 'POST'])
@@ -82,6 +82,7 @@ def upload():
     if request.method == 'POST':
         img = request.files['file']
         if img:
+            try:
                 filename = secure_filename(img.filename)
                 img.save(filename)
                 s3.upload_file(
@@ -89,7 +90,12 @@ def upload():
                     Filename=filename,
                     Key = filename
                 )
-                return render_template('home.html', msg = "File uploaded to AWS")
+            except ValueError:
+                return render_template('home.html', msg = "File not uploaded")
+        return render_template('home.html', msg = "File uploaded to aws")
+
+                
+
 
 
 #Create local server and run the app in that server
