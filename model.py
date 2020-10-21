@@ -5,7 +5,6 @@ import joblib
 import boto3
 import os
 from io import StringIO
-
 from sklearn import metrics
 from sklearn.metrics import r2_score
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
@@ -28,16 +27,15 @@ dummies_Distrcit = pd.get_dummies(dataset.Distrcit)
 dummies_Distrcit
 
 merged_Dataset = pd.concat([dataset,dummies_VegetableType,dummies_Distrcit],axis='columns')
-
 final_Dataset = merged_Dataset.drop(['VegetableType','Distrcit',],axis='columns')
 
-#Assign values to X without Extent & Production columns
+#Assign values to X without Extent & Production columns Independent varible
 X = final_Dataset.drop(['Extent','Production'],axis = 'columns')
 
-#Assign Extent data values to y
+#Assign Extent data values to y #Dependent varible
 y = final_Dataset.Extent
 
-#Assign Production values to z
+#Assign Production values to z #Dependent varible
 z = final_Dataset.Production
 
 # Splitting the dataset into the Training set and Test set for Extent Model
@@ -84,5 +82,6 @@ pred_Production = regressorProduction.predict([predict_SingleValue_arr])
 
 print("Done")
 
+# Exprt the models as pickle
 joblib.dump(regressionExtent, "RF_modelExtent.pkl")
 joblib.dump(regressorProduction, "RF_modelProduction.pkl")

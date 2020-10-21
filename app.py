@@ -4,7 +4,6 @@ import requests
 import pandas as pd
 import numpy as np
 import json
-
 from werkzeug.utils import secure_filename
 import boto3
 
@@ -22,7 +21,6 @@ s3 = boto3.client('s3',
                     aws_session_token="FwoGZXIvYXdzEB0aDLnjOxpwwXlJkWP93CKCAVArCdLWk1/cj1BWlSYExRQPJdmuksPFMUrU8NlUZJJqmlquk/otQ1Y211NrtNmSiapGS1CzFaD5/x//dUFWKXveM7VZrVJ+FkDe9y35mjWw1vsf3NGCmqA/yIwcffVrxGMPOJIyRvPQI1Pf3DK9/jCx0ouaD+wmdr0uue2GdoZE7zgoubm5/AUyKMwuGqjDPa6TjQy9fLYd4tb19urTseLp+slK+0F/2LevicZOXbdu7y0="
                      )
 
-
 BUCKET_NAME='flask-s3-crop'
 
 @app.route("/predict", methods=['GET', 'POST'])
@@ -36,6 +34,7 @@ def predict():
                 Pressure = float(request.form['Pressure'])
                 District = request.form['DistrictName']
                 Vegetable = request.form['VegetableType']
+                
                 DistrictArr = json.loads(District)
                 VegetableArr = json.loads(Vegetable)
 
