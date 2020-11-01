@@ -22,7 +22,6 @@ dataset = pd.read_csv(StringIO(csv_string))
 
 dummies_VegetableType = pd.get_dummies(dataset.VegetableType)
 dummies_VegetableType
-
 dummies_Distrcit = pd.get_dummies(dataset.Distrcit)
 dummies_Distrcit
 
@@ -31,10 +30,8 @@ final_Dataset = merged_Dataset.drop(['VegetableType','Distrcit',],axis='columns'
 
 #Assign values to X without Extent & Production columns Independent varible
 X = final_Dataset.drop(['Extent','Production'],axis = 'columns')
-
 #Assign Extent data values to y #Dependent varible
 y = final_Dataset.Extent
-
 #Assign Production values to z #Dependent varible
 z = final_Dataset.Production
 
@@ -59,18 +56,18 @@ y_pred = modelExtent.predict(X_test)
 z_pred = modelProduction.predict(XZ_test)
 
 # Random Forest Extent model Accurecy
-# print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
-# print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
-# print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
-# print('Variance score: %.2f' % modelExtent.score(X_test, y_test))
-# print('r2_score: %.2f' % r2_score(y_test,y_pred))
+print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
+print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
+print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+print('Variance score: %.2f' % modelExtent.score(X_test, y_test))
+print('r2_score: %.2f' % r2_score(y_test,y_pred))
 
 #Random Forest Production model Accurecy
-# print('Mean Absolute Error:', metrics.mean_absolute_error(z_test,z_pred))
-# print('Mean Squared Error:', metrics.mean_squared_error(z_test,z_pred))
-# print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(z_test,z_pred)))
-# print('Variance score: %.2f' % modelProduction.score(XZ_test, z_test))
-# print('r2_score: %.2f' % r2_score(z_test,z_pred))
+print('Mean Absolute Error:', metrics.mean_absolute_error(z_test,z_pred))
+print('Mean Squared Error:', metrics.mean_squared_error(z_test,z_pred))
+print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(z_test,z_pred)))
+print('Variance score: %.2f' % modelProduction.score(XZ_test, z_test))
+print('r2_score: %.2f' % r2_score(z_test,z_pred))
 
 #Predict specific value
 predict_SingleValue = [490.284643,28.95,24.04,82.21,98.15,0,0,0,0,1,0,0,0,0,1]

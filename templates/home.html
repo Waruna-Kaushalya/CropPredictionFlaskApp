@@ -9,8 +9,15 @@
     rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style2.css') }}">
+
+  <!-- ---------------------------- -->
+
+
+    <!-- ---------------------------- -->
 
   <title>Upcountry vegetable crop yield prediction</title>
 </head>
@@ -21,182 +28,271 @@
       <h1 style="color:green;">Extent prediction</H1>
     </div>
   </h1>
-  <hr>
-  <div id="wrapper">
-    <div id="page-wrapper">
-      <div class="container-fluid">
-        <div class="row" id="main">
-          <form id="containerForm" class="form-horizontal" method="POST" action="/predict">
-            <div class="form-group">
-              <label class="col-sm-3 control-label" for="DistrictName">Choose a District:</label>
-              <div class="col-sm-5">
-                <select name="DistrictName" id="DistrictName" class="form-control">
-                  <option value="[1,0,0,0,0]">Badulla</option>
-                  <option value="[0,1,0,0,0]">Kandy</option>
-                  <option value="[0,0,1,0,0]">Matale</option>
-                  <option value="[0,0,0,1,0]">Nuwaraeliya</option>
-                  <option value="[0,0,0,0,1]">Ratnapura</option>
-                </select>
-              </div>
-            </div>
 
-            <div class="form-group">
-              <label class="col-sm-3 control-label" for="VegetableType">Choose a vegetable type:</label>
-              <div class="col-sm-5">
-                <select name="VegetableType" id="VegetableType" class="form-control">
-                  <option value="[1,0,0,0,0]">Beans</option>
-                  <option value="[0,1,0,0,0]">Beetroot</option>
-                  <option value="[0,0,1,0,0]">Carrot</option>
-                  <option value="[0,0,0,1,0]">Knohkhol</option>
-                  <option value="[0,0,0,0,1]">Leeks</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Rainfall</label>
-              <div class="col-sm-5">
-                <div class="input-group">
-                  <input type="text" class="form-control" name="Rainfall" />
-                  <span class="input-group-addon">mm</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Maximum Temperature</label>
-              <div class="col-sm-5">
-                <div class="input-group">
-                  <input type="text" class="form-control" name="MaximumTemperature" />
-                  <span class="input-group-addon">c</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Minimum Temperature</label>
-              <div class="col-sm-5">
-                <div class="input-group">
-                  <input type="text" class="form-control" name="MinimumTemperature" />
-                  <span class="input-group-addon">c</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Relative Humidity</label>
-              <div class="col-sm-5">
-                <div class="input-group">
-                  <input type="text" class="form-control" name="RelativeHumidity" />
-                  <span class="input-group-addon">%</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Pressure</label>
-              <div class="col-sm-5">
-                <div class="input-group">
-                  <input type="text" class="form-control" name="Pressure" />
-                  <span class="input-group-addon">kPa</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="col-sm-9 col-sm-offset-3">
-                <input class='btn btn-primary' type='submit' value='Submit'></button>
-                {{predictServerMsg}}
-              </div>
-            </div>
-
-            <br>
-            <br>
-            <hr>
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Extent</label>
-              <div class="col-sm-5">
-                <div class="input-group">
-                  <label for="Extent" class="form-control">{{extentPrediction}}</label>
-                  <span class="input-group-addon">Ht</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="col-sm-3 control-label">Production</label>
-              <div class="col-sm-5">
-                <div class="input-group">
-                  <label for="Extent" class="form-control">{{predictionProduction}}</label>
-                  <span class="input-group-addon">Mt</span>
-                </div>
-              </div>
-            </div>
-
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr>
-
-  <div id="wrapper">
-    <div id="page-wrapper">
-      <div class="container-fluid">
-        <div class="row" id="main">
-          <form action="/upload" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-
-              <div class="col-sm-9 col-sm-offset-3">
-                <label>Choose a file to upload to AWS</label>
-              </div>
-
-              <br>
-              <div class="col-sm-9 col-sm-offset-3">
-                <input type="file" name="file" value="file">
-                <br>
-                <input type="submit" name="upload" value="Upload" class="btn btn-success">
-                {{msg}}
-              </div>
-
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
   <hr>
 
 
-  <div id="wrapper">
-    <div id="page-wrapper">
-      <div class="container-fluid">
-        <div class="row" id="main">
-          <form id="containerForm" class="form-horizontal" method="POST" action="/train">
-            <div class="form-group">
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home">Single Value Prediction</a></li>
+      <li><a data-toggle="tab" href="#menu1">Multiple Value Prediction</a></li>
+      <li><a data-toggle="tab" href="#menu2">Data Import</a></li>
+      <li><a data-toggle="tab" href="#menu3">Train model</a></li>
+    </ul>
 
-              <div class="col-sm-9 col-sm-offset-3">
-                <label>Train the model</label>
-              </div>
 
-              <br>
-              <div class="col-sm-9 col-sm-offset-3">
-                <br>
-                <input class='btn btn-primary' type='submit' value='Train' </button>
-                {{modelTrain}}
-              </div>
-
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+        <!-- home -->
+        <h3>Single value prediction</h3>
+        <br>
+        <form id="containerForm" class="form-horizontal" method="POST" action="/predict">
+          <div class="form-group">
+            <div class="col-sm-5">
+              <label for="DistrictName">Choose a District:</label>
+              <select name="DistrictName" id="DistrictName" class="form-control">
+                <option value="[1,0,0,0,0]">Badulla</option>
+                <option value="[0,1,0,0,0]">Kandy</option>
+                <option value="[0,0,1,0,0]">Matale</option>
+                <option value="[0,0,0,1,0]">Nuwaraeliya</option>
+                <option value="[0,0,0,0,1]">Ratnapura</option>
+              </select>
             </div>
-        </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-5">
+              <label for="VegetableType">Choose a vegetable type:</label>
+              <select name="VegetableType" id="VegetableType" class="form-control">
+                <option value="[1,0,0,0,0]">Beans</option>
+                <option value="[0,1,0,0,0]">Beetroot</option>
+                <option value="[0,0,1,0,0]">Carrot</option>
+                <option value="[0,0,0,1,0]">Knohkhol</option>
+                <option value="[0,0,0,0,1]">Leeks</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-5">
+              <label>Rainfall</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="Rainfall" />
+                <span class="input-group-addon">mm</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-5">
+              <label>Maximum Temperature:</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="MaximumTemperature" />
+                <span class="input-group-addon">c</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-5">
+              <label>Minimum Temperature:</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="MinimumTemperature" />
+                <span class="input-group-addon">c</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-5">
+              <label>Relative Humidity:</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="RelativeHumidity" />
+                <span class="input-group-addon">%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-5">
+              <label>Pressure:</label>
+              <div class="input-group">
+                <input type="text" class="form-control" name="Pressure" />
+                <span class="input-group-addon">kPa</span>
+              </div>
+            </div>
+          </div>
+          <br>
+          <br>
+
+          <div class="form-group">
+            <div class="col-sm-5">
+              <label>Predict the values:</label>
+              <input class='btn btn-primary' type='submit' value='Submit'></button>
+              {{predictServerMsg}}
+            </div>
+          </div>
+
+          <br>
+          <br>
+          <hr>
+          <div class="form-group">
+            <div class="col-sm-5">
+              <label>Extent:</label>
+              <div class="input-group">
+                <label for="Extent" class="form-control">{{extentPrediction}}</label>
+                <span class="input-group-addon">Ht</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-5">
+              <label>Production:</label>
+              <div class="input-group">
+                <label for="Extent" class="form-control">{{predictionProduction}}</label>
+                <span class="input-group-addon">Mt</span>
+              </div>
+            </div>
+          </div>
         </form>
+        <hr>
+        <!-- End home -->
       </div>
+
+      <div id="menu1" class="tab-pane fade">
+        <h3>Multiple value prediction</h3>
+        <!-- Menu 1 -->
+        <div id="wrapper">
+          <div id="page-wrapper">
+            <div class="container-fluid">
+              <div class="row" id="main">
+                <form action="/csvpredict" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label>Upload CSV to Predict</label>
+                    <br>
+                    <input type="file" name="file" value="file">
+                    <br>
+                    <input type="submit" name="upload" value="Upload" class="btn btn-success">
+                    {{msg}}
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <form id="containerForm" class="form-horizontal" method="POST" action="/predictCSVFile">
+          <div class="form-group">
+            <div class="col-sm-5">
+              <label>Predict and get resultl</label>
+              <br>
+              <br>
+              <input class='btn btn-primary' type='submit' value='Train' </button>
+              {{modelTrain}}
+            </div>
+          </div>
+        </form>
+        <hr>
+
+
+<!-- ------------------- -->
+<div id="wrapper">
+          <div id="page-wrapper">
+            <div class="container-fluid">
+              <div class="row" id="main">
+                <form action="/showCSVtables" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label>Show the data</label>
+                  
+                  
+                    <input type='submit' value='Submit' name="upload" class="btn btn-success">
+                    {{msg}}
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+<!-- ------------------- -->
+
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/tableStyle.css') }}"> -->
+
+  <!-- <h3>Predicted Result</h3>
+  <div class="table">
+    {% block body %}
+    {{ data|safe }}
+    {% endblock %}  
+  </div> -->
+  
+  {% for table in tables %}
+  {{titles[loop.index]}}
+  {{ table|safe }}
+{% endfor %}
+
+
+
+<!-- ---------------------------- -->
+
+        <!-- Menu 1 end  -->
+      </div>
+
+      <div id="menu2" class="tab-pane fade">
+        <h3>Upload CSV Values</h3>
+        <!-- Menu 2 -->
+        <div id="wrapper">
+          <div id="page-wrapper">
+            <div class="container-fluid">
+              <div class="row" id="main">
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label>Choose a file to upload to AWS</label>
+                    <br>
+                    <input type="file" name="file" value="file">
+                    <br>
+                    <input type="submit" name="upload" value="Upload" class="btn btn-success">
+                    {{msg}}
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <!-- Menu 2 end  -->
+      </div>
+
+      <div id="menu3" class="tab-pane fade">
+        <h3>Train the model</h3>
+        <!-- Menu 3 -->
+        <form id="containerForm" class="form-horizontal" method="POST" action="/train">
+          <div class="form-group">
+            <div class="col-sm-5">
+              <label>Train the model</label>
+              <br>
+              <br>
+              <input class='btn btn-primary' type='submit' value='Train' </button>
+              {{modelTrain}}
+            </div>
+          </div>
+        </form>
+        <hr>
+        <!-- Menu 3 end -->
+      </div>
+
+      <div id="menu4" class="tab-pane fade">
+        <h3>Menu 4</h3>
+        <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+      </div>
+
     </div>
   </div>
-  </div>
-  <hr>
 
   <script type="text/javascript" src="{{ url_for('static', filename='validatorcustomescript.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='bootstrapvalidator.js') }}"></script>
+
+  <!-- -------------------------- -->
 
 </body>
 
