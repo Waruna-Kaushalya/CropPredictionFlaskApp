@@ -27,7 +27,7 @@ s3 = boto3.client('s3',
                     aws_session_token =S3_SESSION_TOKEN
                      )
 
-BUCKET_NAME = config.S3_BUCKET
+BUCKET_NAME = S3_BUCKET
 
 @app.route("/predict", methods=['GET', 'POST'])
 def predict():
