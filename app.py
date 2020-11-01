@@ -6,7 +6,7 @@ import numpy as np
 import json
 from werkzeug.utils import secure_filename
 import boto3
-import tablib
+# import tablib
 import os
 import config
 
