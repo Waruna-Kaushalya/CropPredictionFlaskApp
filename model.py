@@ -11,9 +11,11 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
+import config
+
 # read aws csv file
-client = boto3.client('s3', aws_access_key_id="AKIA4YEQCWGSPB2C4OGT", aws_secret_access_key="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")
-bucket_name = 'flask-s3-crop'
+client = boto3.client('s3', aws_access_key_id=config.S3_KEY, aws_secret_access_key=config.S3_SECRET)
+bucket_name = config.S3_BUCKET
 object_key = 'VegetableAndClimateData.csv'
 csv_obj = client.get_object(Bucket=bucket_name, Key=object_key)
 body = csv_obj['Body']
@@ -21,9 +23,8 @@ csv_string = body.read().decode('utf8')
 dataset = pd.read_csv(StringIO(csv_string))
 
 dummies_VegetableType = pd.get_dummies(dataset.VegetableType)
-dummies_VegetableType
 dummies_Distrcit = pd.get_dummies(dataset.Distrcit)
-dummies_Distrcit
+
 
 merged_Dataset = pd.concat([dataset,dummies_VegetableType,dummies_Distrcit],axis='columns')
 final_Dataset = merged_Dataset.drop(['VegetableType','Distrcit',],axis='columns')
