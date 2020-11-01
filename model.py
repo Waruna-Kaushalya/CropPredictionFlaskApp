@@ -13,16 +13,16 @@ from sklearn.model_selection import train_test_split
 
 # import config
 
-S3_BUCKET = "flask-s3-crop"
-S3_KEY = os.environ.get("ASIA4YEQCWGSC23WNAFY")
-S3_SECRET = os.environ.get("Z/ZeHdO8qRG5E4kWMAbxY0ryC90bt7Abahl32mMi")
-S3_SESSION_TOKEN = os.environ.get("FwoGZXIvYXdzEDEaDFTxbSpUYYLH9JJ8jyKCAd4W7JcX549y3+jbq8XmKXE6adTz0Y2hApKR3SLP+ApjI3Z7h3OGZD+n1sqyaUQCybYUvgU5fQwBDg3cX+8uu6mr6RFJGW5xpmJc7v9BoXqwVCHLZeBbxU7uqIh62mFE+pgXwCIyQrf11oSLb3A120kt6OClbkZINBGQfQn04shCBvco3YT2/AUyKA71Ju57c10uvIoTeBZBG9qEqPeVzoDlphh4jSFFL2XmYaDYj5DVnwg=")
+# S3_BUCKET = "flask-s3-crop"
+# S3_KEY = os.environ.get("ASIA4YEQCWGSC23WNAFY")
+# S3_SECRET = os.environ.get("Z/ZeHdO8qRG5E4kWMAbxY0ryC90bt7Abahl32mMi")
+# S3_SESSION_TOKEN = os.environ.get("FwoGZXIvYXdzEDEaDFTxbSpUYYLH9JJ8jyKCAd4W7JcX549y3+jbq8XmKXE6adTz0Y2hApKR3SLP+ApjI3Z7h3OGZD+n1sqyaUQCybYUvgU5fQwBDg3cX+8uu6mr6RFJGW5xpmJc7v9BoXqwVCHLZeBbxU7uqIh62mFE+pgXwCIyQrf11oSLb3A120kt6OClbkZINBGQfQn04shCBvco3YT2/AUyKA71Ju57c10uvIoTeBZBG9qEqPeVzoDlphh4jSFFL2XmYaDYj5DVnwg=")
 
 
 
 # read aws csv file
-client = boto3.client('s3', aws_access_key_id=config.S3_KEY, aws_secret_access_key=config.S3_SECRET)
-bucket_name = config.S3_BUCKET
+client = boto3.client('s3', aws_access_key_id="AKIA4YEQCWGSAZKWZFLF", aws_secret_access_key="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")
+bucket_name = "flask-s3-crop"
 object_key = 'VegetableAndClimateData.csv'
 csv_obj = client.get_object(Bucket=bucket_name, Key=object_key)
 body = csv_obj['Body']

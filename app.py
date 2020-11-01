@@ -10,10 +10,6 @@ import boto3
 import os
 import config
 
-S3_BUCKET = "flask-s3-crop"
-S3_KEY = os.environ.get("ASIA4YEQCWGSC23WNAFY")
-S3_SECRET = os.environ.get("Z/ZeHdO8qRG5E4kWMAbxY0ryC90bt7Abahl32mMi")
-S3_SESSION_TOKEN = os.environ.get("FwoGZXIvYXdzEDEaDFTxbSpUYYLH9JJ8jyKCAd4W7JcX549y3+jbq8XmKXE6adTz0Y2hApKR3SLP+ApjI3Z7h3OGZD+n1sqyaUQCybYUvgU5fQwBDg3cX+8uu6mr6RFJGW5xpmJc7v9BoXqwVCHLZeBbxU7uqIh62mFE+pgXwCIyQrf11oSLb3A120kt6OClbkZINBGQfQn04shCBvco3YT2/AUyKA71Ju57c10uvIoTeBZBG9qEqPeVzoDlphh4jSFFL2XmYaDYj5DVnwg=")
 
 
 app = Flask(__name__)
@@ -22,12 +18,12 @@ def home():
     return render_template('home.html')
 
 s3 = boto3.client('s3',
-                    aws_access_key_id =S3_KEY,
-                    aws_secret_access_key =S3_SECRET,
-                    aws_session_token =S3_SESSION_TOKEN
+                    aws_access_key_id ="ASIA4YEQCWGSDNOZNZK6",
+                    aws_secret_access_key ="YYCDaMgAt44ic4Muorh+NNxUAN6uQB6ykXdxxo5o",
+                    aws_session_token ="FwoGZXIvYXdzEE0aDHvBxSxHNiWtQl8SeCKCAd6dMtKqJ8v2FjFpREc0MOdUEi6WRdJyQpACcW6EgWS/Ks1px/fSR7LtYiAN37QtGsCFchKIIUVYbQ1QQnajTktu9HlmocWv+pkjYkK4ks5UpsIaBRR9ENbSZCDCk7X3IzaF4avIr3JnQzuiKWM8I5AHgJOZPmvWOOnWQ6bkx5L3xPgoz5f8/AUyKLT7XhtnkZVevdjb3SC5z82ul+a+nmi4e4nIIS6xoM6Umhq46rik2Z8="
                      )
 
-BUCKET_NAME = S3_BUCKET
+BUCKET_NAME = "flask-s3-crop"
 
 @app.route("/predict", methods=['GET', 'POST'])
 def predict():
