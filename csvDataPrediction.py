@@ -5,15 +5,15 @@ import joblib
 import boto3
 import os
 from io import StringIO
-from sklearn import metrics
-from sklearn.metrics import r2_score
+# from sklearn import metrics
+# from sklearn.metrics import r2_score
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 # from flask import Flask, render_template, request
 import joblib
 import requests
-import json
+# import json
 from werkzeug.utils import secure_filename
 import config
 
@@ -88,8 +88,8 @@ ProductionPredict = np.around(ProductionPredict, 2)
 data = {'Extent_Prediction': ExtentPrediction, 'Production_Predict': ProductionPredict}
 PredicteddataSetTable = pd.DataFrame(data=data)
 
-print("PredicteddataSetTable")
-print(PredicteddataSetTable)
+# print("PredicteddataSetTable")
+# print(PredicteddataSetTable)
 
 # # Concat orginal data set with predicted data array
 frames = [dataset, PredicteddataSetTable]
@@ -98,3 +98,4 @@ result = pd.concat([dataset2, PredicteddataSetTable], axis=1, sort=False)
 # # Export data as CSV file
 df = pd.DataFrame(result)
 df.to_csv (r'csvResult.csv', index = False, header=True)
+

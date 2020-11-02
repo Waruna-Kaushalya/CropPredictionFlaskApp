@@ -19,8 +19,7 @@ def home():
 
 s3 = boto3.client('s3',
                     aws_access_key_id =config.S3_KEY,
-                    aws_secret_access_key =config.S3_SECRET,
-                    # aws_session_token ="FwoGZXIvYXdzEFoaDBRAaaVEa/Dm8xFpEyKBAaiCqWcEBaHiibctBg24eUw97qJnuEPwFSaxdEvvVPkQx317qLUYZFt5AVJoajTeov15OJVIypbDoYQgJ+0H9EILryB+zU7NC1rII3C876PzEhUUk3Yeq9iI4dGAdpSQNpUu2fG7MNr5+pAexN2W9APSO9X3tzy5Ue+mQL/CQ7Cq7Sjhlv/8BTIoXj+8CXFtJytp02n8rJFbHGhEjTIAHinSHkizyojec4OuEAxTxbb8wg=="
+                    aws_secret_access_key =config.S3_SECRET
                      )
 
 BUCKET_NAME = config.S3_BUCKET
@@ -91,7 +90,7 @@ def upload():
         return render_template('home.html', msg = "File uploaded to aws")
 
 
-@app.route('/csvpredict',methods=['POST'])
+@app.route('/csvimport',methods=['POST'])
 def csvpredict():
     print("abc")
     if request.method == 'POST':
@@ -112,7 +111,7 @@ def csvpredict():
 
 
 
-@app.route("/predictCSVFile", methods=['GET', 'POST'])
+@app.route("/predictcsvfile", methods=['GET', 'POST'])
 def predictCSVFile():
         if request.method == 'POST':
             try:
@@ -123,18 +122,13 @@ def predictCSVFile():
 
 
 
-
-
-@app.route("/showCSVtables", methods=['GET', 'POST'])
+@app.route("/showcsvtables", methods=['GET', 'POST'])
 def show_tables():
     datasetCsv = pd.read_csv('csvResult.csv')
     df = pd.DataFrame(datasetCsv)
     data = datasetCsv
-    #return dataset.html
     return render_template('home.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
     
-
-
 
 #Create local server and run the app in that server
 if __name__ == "__main__":
