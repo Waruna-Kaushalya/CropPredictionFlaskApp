@@ -24,7 +24,7 @@ s3 = boto3.client('s3',
 
 BUCKET_NAME = config.S3_BUCKET
 
-@app.route("/predict", methods=['GET', 'POST'])
+@app.route("/predict", methods=['POST'])
 def predict():
         if request.method == 'POST':
             try:
@@ -60,7 +60,7 @@ def predict():
             return render_template('home.html', extentPrediction = extentPrediction, predictionProduction = productionPrediction, predictServerMsg="Prediction done")
 
 
-@app.route("/train", methods=['GET', 'POST'])
+@app.route("/train", methods=['POST'])
 def train():
         if request.method == 'POST':
             try:
@@ -111,18 +111,19 @@ def csvpredict():
 
 
 
-@app.route("/predictcsvfile", methods=['GET', 'POST'])
+@app.route("/predictcsvfile", methods=['POST'])
 def predictCSVFile():
         if request.method == 'POST':
             try:
                 import csvDataPrediction
+                csvDataPrediction.trainModel()
             except ValueError:
                 return render_template('home.html', modelTrain = "Data not predicted")
         return render_template('home.html', modelTrain = "Data is predicted and save as csv")
 
 
 
-@app.route("/showcsvtables", methods=['GET', 'POST'])
+@app.route("/showcsvtables", methods=['POST'])
 def show_tables():
     datasetCsv = pd.read_csv('csvResult.csv')
     df = pd.DataFrame(datasetCsv)
