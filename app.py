@@ -125,10 +125,14 @@ def predictCSVFile():
 
 @app.route("/showcsvtables", methods=['POST'])
 def show_tables():
-    datasetCsv = pd.read_csv('csvResult.csv')
-    df = pd.DataFrame(datasetCsv)
-    data = datasetCsv
-    return render_template('home.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
+        if request.method == 'POST':
+            try:
+                datasetCsv = pd.read_csv('csvResult.csv')
+                df = pd.DataFrame(datasetCsv)
+                data = datasetCsv
+            except ValueError:
+                return render_template('home.html', showMsg = "Data cannot display")
+        return render_template('home.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
     
 
 #Create local server and run the app in that server

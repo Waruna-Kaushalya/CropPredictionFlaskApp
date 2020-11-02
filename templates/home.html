@@ -200,25 +200,25 @@
                     <br>
                     <br>
                     <input type='submit' value='Show result' name="upload" class="btn btn-success">
-                    {{msg}}
+                    {{showMsg}}
                   </div>
 
-                  <hr>
-                  <!-- ------------------- -->
-                  <label>Result of prediction</label>
-                  <br>
-                  <br>
-                  {% for table in tables %}
-                  {{titles[loop.index]}}
-                  {{ table|safe }}
-                  {% endfor %}
-                  <!-- Menu 1 end  -->
+              
                 </form>
               </div>
             </div>
           </div>
         </div>
-
+        <hr>
+        <!-- ------------------- -->
+        <label>Result of prediction</label>
+        <br>
+        <br>
+        {% for table in tables %}
+        {{titles[loop.index]}}
+        {{ table|safe }}
+        {% endfor %}
+        <!-- Menu 1 end  -->
         <!-- -- -->
       </div>
 
