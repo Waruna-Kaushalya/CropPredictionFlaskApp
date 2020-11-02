@@ -18,12 +18,12 @@ def home():
     return render_template('home.html')
 
 s3 = boto3.client('s3',
-                    aws_access_key_id ="AKIA4YEQCWGSAZKWZFLF",
-                    aws_secret_access_key ="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",
+                    aws_access_key_id =config.S3_KEY,
+                    aws_secret_access_key =config.S3_SECRET,
                     # aws_session_token ="FwoGZXIvYXdzEFoaDBRAaaVEa/Dm8xFpEyKBAaiCqWcEBaHiibctBg24eUw97qJnuEPwFSaxdEvvVPkQx317qLUYZFt5AVJoajTeov15OJVIypbDoYQgJ+0H9EILryB+zU7NC1rII3C876PzEhUUk3Yeq9iI4dGAdpSQNpUu2fG7MNr5+pAexN2W9APSO9X3tzy5Ue+mQL/CQ7Cq7Sjhlv/8BTIoXj+8CXFtJytp02n8rJFbHGhEjTIAHinSHkizyojec4OuEAxTxbb8wg=="
                      )
 
-BUCKET_NAME = "flask-s3-crop"
+BUCKET_NAME = config.S3_BUCKET
 
 @app.route("/predict", methods=['GET', 'POST'])
 def predict():
