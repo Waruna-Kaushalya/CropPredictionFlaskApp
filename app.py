@@ -79,6 +79,7 @@ def upload():
         if img:
             try:
                 filename = secure_filename(img.filename)
+                filename = "VegetableAndClimateData.csv"
                 img.save(filename)
                 s3.upload_file(
                     Bucket = BUCKET_NAME,
@@ -98,6 +99,7 @@ def csvpredict():
         if img:
             try:
                 filename = secure_filename(img.filename)
+                filename = "csv_Predict_Values.csv"
                 img.save(filename)
                 s3.upload_file(
                     Bucket = BUCKET_NAME,

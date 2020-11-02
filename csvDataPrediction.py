@@ -55,7 +55,7 @@ modelProduction = regressorProduction.fit(XZ_train, z_train)
 
 #---------------- Import csv file need to predict and preiction-----------------------
 # # # read aws csv file
-object_key = 'KandyBeansWithoutProduction.csv'
+object_key = 'csv_Predict_Values.csv'
 csv_obj = client.get_object(Bucket=bucket_name, Key=object_key)
 body = csv_obj['Body']
 csv_string = body.read().decode('utf8')
