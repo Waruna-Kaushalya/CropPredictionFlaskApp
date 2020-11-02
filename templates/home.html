@@ -115,18 +115,18 @@
             </div>
           </div>
           <br>
-     
+
 
           <div class="form-group">
             <div class="col-sm-5">
-             
+
               <!-- <input class='btn btn-primary' type='submit' value='Predict the values'></button> -->
-              <input  class="btn btn-primary btn-lg btn-block" type='submit' value='Predict the values'></button>
+              <input class="btn btn-primary btn-lg btn-block" type='submit' value='Predict the values'></button>
               {{predictServerMsg}}
             </div>
           </div>
 
-         
+
           <hr>
           <div class="form-group">
             <div class="col-sm-5">
@@ -202,21 +202,24 @@
                     <input type='submit' value='Show result' name="upload" class="btn btn-success">
                     {{msg}}
                   </div>
+
+                  <hr>
+                  <!-- ------------------- -->
+                  <label>Result of prediction</label>
+                  <br>
+                  <br>
+                  {% for table in tables %}
+                  {{titles[loop.index]}}
+                  {{ table|safe }}
+                  {% endfor %}
+                  <!-- Menu 1 end  -->
                 </form>
               </div>
             </div>
           </div>
         </div>
-        <hr>
-        <!-- ------------------- -->
-        <label>Result of prediction</label>
-        <br>
-        <br>
-        {% for table in tables %}
-        {{titles[loop.index]}}
-        {{ table|safe }}
-        {% endfor %}
-        <!-- Menu 1 end  -->
+
+        <!-- -- -->
       </div>
 
       <div id="menu2" class="tab-pane fade">
