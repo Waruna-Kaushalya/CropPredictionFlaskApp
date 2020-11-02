@@ -11,7 +11,7 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
-# import config
+import config
 
 # S3_BUCKET = "flask-s3-crop"
 # S3_KEY = os.environ.get("ASIA4YEQCWGSC23WNAFY")
@@ -21,8 +21,8 @@ from sklearn.model_selection import train_test_split
 
 
 # read aws csv file
-client = boto3.client('s3', aws_access_key_id="AKIA4YEQCWGSAZKWZFLF", aws_secret_access_key="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")
-bucket_name = "flask-s3-crop"
+client = boto3.client('s3', aws_access_key_id=config.S3_KEY, aws_secret_access_key=config.S3_SECRET)
+bucket_name = config.S3_BUCKET
 object_key = 'VegetableAndClimateData.csv'
 csv_obj = client.get_object(Bucket=bucket_name, Key=object_key)
 body = csv_obj['Body']
@@ -63,27 +63,27 @@ y_pred = modelExtent.predict(X_test)
 # Predicting the Test set results of Production model
 z_pred = modelProduction.predict(XZ_test)
 
-# Random Forest Extent model Accurecy
-print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
-print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
-print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
-print('Variance score: %.2f' % modelExtent.score(X_test, y_test))
-print('r2_score: %.2f' % r2_score(y_test,y_pred))
+# # Random Forest Extent model Accurecy
+# print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))
+# print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))
+# print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+# print('Variance score: %.2f' % modelExtent.score(X_test, y_test))
+# print('r2_score: %.2f' % r2_score(y_test,y_pred))
 
-#Random Forest Production model Accurecy
-print('Mean Absolute Error:', metrics.mean_absolute_error(z_test,z_pred))
-print('Mean Squared Error:', metrics.mean_squared_error(z_test,z_pred))
-print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(z_test,z_pred)))
-print('Variance score: %.2f' % modelProduction.score(XZ_test, z_test))
-print('r2_score: %.2f' % r2_score(z_test,z_pred))
+# #Random Forest Production model Accurecy
+# print('Mean Absolute Error:', metrics.mean_absolute_error(z_test,z_pred))
+# print('Mean Squared Error:', metrics.mean_squared_error(z_test,z_pred))
+# print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(z_test,z_pred)))
+# print('Variance score: %.2f' % modelProduction.score(XZ_test, z_test))
+# print('r2_score: %.2f' % r2_score(z_test,z_pred))
 
-#Predict specific value
-predict_SingleValue = [490.284643,28.95,24.04,82.21,98.15,0,0,0,0,1,0,0,0,0,1]
-predict_SingleValue_arr = np.array(predict_SingleValue)
-# ran_data_num = ran_data_arr.reshape(1,-1)
+# #Predict specific value
+# predict_SingleValue = [490.284643,28.95,24.04,82.21,98.15,0,0,0,0,1,0,0,0,0,1]
+# predict_SingleValue_arr = np.array(predict_SingleValue)
+# # ran_data_num = ran_data_arr.reshape(1,-1)
 
-pred_Extent = regressionExtent.predict([predict_SingleValue_arr])
-pred_Production = regressorProduction.predict([predict_SingleValue_arr])
+# pred_Extent = regressionExtent.predict([predict_SingleValue_arr])
+# pred_Production = regressorProduction.predict([predict_SingleValue_arr])
 
 print("Done")
 

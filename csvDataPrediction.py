@@ -15,12 +15,12 @@ import joblib
 import requests
 import json
 from werkzeug.utils import secure_filename
-# import config
+import config
 
 
 # # read aws csv file
-client = boto3.client('s3', aws_access_key_id="AKIA4YEQCWGSAZKWZFLF", aws_secret_access_key="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")
-bucket_name = "flask-s3-crop"
+client = boto3.client('s3', aws_access_key_id=config.S3_KEY, aws_secret_access_key=config.S3_SECRET)
+bucket_name = config.S3_BUCKET
 
 object_key = 'VegetableAndClimateData.csv'
 csv_obj = client.get_object(Bucket=bucket_name, Key=object_key)
