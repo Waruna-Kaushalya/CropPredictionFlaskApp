@@ -18,9 +18,9 @@ def home():
     return render_template('home.html')
 
 s3 = boto3.client('s3',
-                    aws_access_key_id ="ASIA4YEQCWGSDNOZNZK6",
-                    aws_secret_access_key ="YYCDaMgAt44ic4Muorh+NNxUAN6uQB6ykXdxxo5o",
-                    aws_session_token ="FwoGZXIvYXdzEE0aDHvBxSxHNiWtQl8SeCKCAd6dMtKqJ8v2FjFpREc0MOdUEi6WRdJyQpACcW6EgWS/Ks1px/fSR7LtYiAN37QtGsCFchKIIUVYbQ1QQnajTktu9HlmocWv+pkjYkK4ks5UpsIaBRR9ENbSZCDCk7X3IzaF4avIr3JnQzuiKWM8I5AHgJOZPmvWOOnWQ6bkx5L3xPgoz5f8/AUyKLT7XhtnkZVevdjb3SC5z82ul+a+nmi4e4nIIS6xoM6Umhq46rik2Z8="
+                    aws_access_key_id ="ASIA4YEQCWGSLIUEMKFO",
+                    aws_secret_access_key ="0uaOL70hOnC8aCepcK0k6uEtMgKViej9rc4iM3iZ",
+                    aws_session_token ="FwoGZXIvYXdzEFoaDBRAaaVEa/Dm8xFpEyKBAaiCqWcEBaHiibctBg24eUw97qJnuEPwFSaxdEvvVPkQx317qLUYZFt5AVJoajTeov15OJVIypbDoYQgJ+0H9EILryB+zU7NC1rII3C876PzEhUUk3Yeq9iI4dGAdpSQNpUu2fG7MNr5+pAexN2W9APSO9X3tzy5Ue+mQL/CQ7Cq7Sjhlv/8BTIoXj+8CXFtJytp02n8rJFbHGhEjTIAHinSHkizyojec4OuEAxTxbb8wg=="
                      )
 
 BUCKET_NAME = "flask-s3-crop"
