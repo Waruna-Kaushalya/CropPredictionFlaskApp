@@ -22,6 +22,27 @@
     <h3>Performing a single prediction</h3>
     <hr>
 
+    <div class="ccol align-self-center">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      {% if category == 'success' %}
+      <div class="alert alert-success mb-3" role="alert">
+        <center>
+          {{ message }}
+        </center>
+      </div>
+      {% endif %}
+
+      {% if category == 'error' %}
+      <div class="alert alert-danger mb-3" role="alert">
+        {{ message }}
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% endwith%}
+    </div>
 
 
     <br>
@@ -109,26 +130,15 @@
             <div class="col-md-5">
               <label>Predict the values</label>
               <input class="btn btn-primary btn-block" type='submit' value='Predict the values'></button>
-              {{predictServerMsg}}
 
             </div>
           </div>
         </div>
 
-
-        <!-- <div class="row">
-          <div class="form-group">
-            <div class="col-md-5">
-              <input class="btn btn-primary btn-lg btn-block" type='submit' value='Predict the values'></button>
-              {{predictServerMsg}}
-            </div>
-          </div>
-        </div> -->
-
         <div class="row">
           <div class="form-group">
             <div class="col-md-5">
-              <div class="alert alert-success" role="alert">
+              <div class="alert alert-info" role="alert">
                 <h3>
                   Extent: {{extentPrediction}}Ht
                 </h3>
@@ -136,7 +146,7 @@
 
             </div>
             <div class="col-md-5">
-              <div class="alert alert-success" role="alert">
+              <div class="alert alert-info" role="alert">
                 <h3>
                   Production: {{predictionProduction}} Mt
                 </h3>

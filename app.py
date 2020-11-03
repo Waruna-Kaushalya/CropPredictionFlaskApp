@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash
+from flask import Flask, render_template, request, flash, redirect, url_for
 import joblib
 import requests
 import pandas as pd
@@ -11,6 +11,7 @@ import os
 import config
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'thisissecretkey'
 @app.route("/")
 def home():
     return render_template('home.html')
@@ -65,9 +66,10 @@ def predict():
                 productionPrediction = round(float(productionPrediction), 2)
 
             except:
-                return render_template('home.html', predictServerMsg = "Please upload csv file and train the model")
-
-            return render_template('home.html', extentPrediction = extentPrediction, predictionProduction = productionPrediction, predictServerMsg="Prediction done")
+                flash("Please upload csv file and train the model" , 'error')
+                return render_template('home.html')
+            flash('Prediction done' , 'success')
+            return render_template('home.html', extentPrediction = extentPrediction, predictionProduction = productionPrediction)
 
 
 @app.route("/train", methods=['POST'])
@@ -76,8 +78,10 @@ def train():
             try:
                 import model
             except ValueError:
-                return render_template('trainmodel.html', modelTrain = "Model is not trained")
-        return render_template('trainmodel.html', modelTrain = "Model is trained")
+                flash("Model is not trained. Please upload csv file and train the model!" , 'error')
+                return render_template('trainmodel.html')
+        flash('Model is trained' , 'success')
+        return render_template('trainmodel.html')
 
 
 @app.route('/upload',methods=['POST'])
@@ -95,9 +99,12 @@ def upload():
                     Filename=filename,
                     Key = filename
                 )
+
             except ValueError:
-                return render_template('trainmodel.html', msg = "File not uploaded")
-        return render_template('trainmodel.html', msg = "File uploaded to aws")
+                flash("File not uploaded!" , 'error')
+                return redirect(url_for('trainmodel.html'))
+        flash('File is uploadedd!' , 'success')
+        return redirect(url_for('trainmodel'))
 
 
 @app.route('/csvimport',methods=['POST'])
@@ -116,8 +123,10 @@ def csvpredict():
                     Key = filename
                 )
             except ValueError:
-                return render_template('multiplepred.html', msg = "File not uploaded")
-        return render_template('multiplepred.html', msg = "File uploaded to aws")
+                flash('File is not uploaded!' , 'error')
+                return render_template('multiplepred.html')
+        flash('File is uploaded!' , 'success')
+        return render_template('multiplepred.html')
 
 
 
@@ -128,8 +137,10 @@ def predictCSVFile():
                 import csvDataPrediction
                 csvDataPrediction.trainModel()
             except ValueError:
-                return render_template('multiplepred.html', modelTrain = "Data not predicted")
-        return render_template('multiplepred.html', modelTrain = "Data is predicted and save as csv")
+                flash('Data not predicted!' , 'error')
+                return render_template('multiplepred.html')
+        flash('Data is predicted!' , 'success')
+        return render_template('multiplepred.html')
 
 
 
@@ -141,7 +152,9 @@ def show_tables():
                 df = pd.DataFrame(datasetCsv)
                 data = datasetCsv
             except ValueError:
-                return render_template('multiplepred.html', showMsg = "Data cannot display")
+                flash('Data cannot display!' , 'error')
+                return render_template('multiplepred.html')
+        flash('Predicted data displey!' , 'success')
         return render_template('multiplepred.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
     
 
