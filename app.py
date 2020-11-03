@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 import joblib
 import requests
 import pandas as pd
@@ -10,12 +10,22 @@ import boto3
 import os
 import config
 
-
-
 app = Flask(__name__)
 @app.route("/")
 def home():
     return render_template('home.html')
+
+@app.route("/multiplepred")
+def multiplepred():
+    return render_template('multiplepred.html')
+
+@app.route("/trainmodel")
+def trainmodel():
+    return render_template('trainmodel.html')
+
+@app.route("/about")
+def about():
+    return render_template('about.html')
 
 s3 = boto3.client('s3',
                     aws_access_key_id =config.S3_KEY,
@@ -66,8 +76,8 @@ def train():
             try:
                 import model
             except ValueError:
-                return render_template('home.html', modelTrain = "Model is not trained")
-        return render_template('home.html', modelTrain = "Model is trained")
+                return render_template('trainmodel.html', modelTrain = "Model is not trained")
+        return render_template('trainmodel.html', modelTrain = "Model is trained")
 
 
 @app.route('/upload',methods=['POST'])
@@ -86,8 +96,8 @@ def upload():
                     Key = filename
                 )
             except ValueError:
-                return render_template('home.html', msg = "File not uploaded")
-        return render_template('home.html', msg = "File uploaded to aws")
+                return render_template('trainmodel.html', msg = "File not uploaded")
+        return render_template('trainmodel.html', msg = "File uploaded to aws")
 
 
 @app.route('/csvimport',methods=['POST'])
@@ -106,8 +116,8 @@ def csvpredict():
                     Key = filename
                 )
             except ValueError:
-                return render_template('home.html', msg = "File not uploaded")
-        return render_template('home.html', msg = "File uploaded to aws")
+                return render_template('multiplepred.html', msg = "File not uploaded")
+        return render_template('multiplepred.html', msg = "File uploaded to aws")
 
 
 
@@ -118,8 +128,8 @@ def predictCSVFile():
                 import csvDataPrediction
                 csvDataPrediction.trainModel()
             except ValueError:
-                return render_template('home.html', modelTrain = "Data not predicted")
-        return render_template('home.html', modelTrain = "Data is predicted and save as csv")
+                return render_template('multiplepred.html', modelTrain = "Data not predicted")
+        return render_template('multiplepred.html', modelTrain = "Data is predicted and save as csv")
 
 
 
@@ -131,8 +141,8 @@ def show_tables():
                 df = pd.DataFrame(datasetCsv)
                 data = datasetCsv
             except ValueError:
-                return render_template('home.html', showMsg = "Data cannot display")
-        return render_template('home.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
+                return render_template('multiplepred.html', showMsg = "Data cannot display")
+        return render_template('multiplepred.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
     
 
 #Create local server and run the app in that server

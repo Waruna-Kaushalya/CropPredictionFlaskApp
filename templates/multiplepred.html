@@ -1,0 +1,88 @@
+{%extends "layout.html"%}
+
+{%block content%}
+
+<div class="topnav" id="myTopnav">
+
+    <a href="{{ url_for('home')}}">Single Prediction</a>
+    <a href="{{ url_for('multiplepred')}}" class="active">Multiple Prediction</a>
+    <a href="{{ url_for('trainmodel')}}">Model Train</a>
+    <a href="{{ url_for('about')}}">about</a>
+
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+
+
+<div class="multiplepred">
+    <div class="container">
+
+        <h3>Performing a series of predictions simultaneously</h3>
+        <hr>
+        <br>
+        <div class="container">
+
+            <!--  -->
+            <div class="row">
+                <div class="form-group">
+                    <form action="/csvimport" method="POST" enctype="multipart/form-data"></form>
+                    <div class="col-md-2">
+                        <label>Choose a file to upload</label>
+                        <br>
+                        <input type="file" name="file" value="file">
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block">
+                        {{msg}}
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="form-group">
+                    <form id="containerForm" class="form-horizontal" method="POST" action="/predictcsvfile">
+                        <div class="col-md-2">
+                            <label>Make the prediction</label>
+                        </div>
+
+                        <div class="col-md-2">
+                            <input class='btn btn-primary btn-block' type='submit' value='Train model' </button>
+                            {{modelTrain}}
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="form-group">
+                    <form action="/showcsvtables" method="POST" enctype="multipart/form-data">
+                        <div class="col-md-2">
+                            <label>Get the result of prediction</label>
+                        </div>
+
+                        <div class="col-md-2">
+                            <input type='submit' value='Show result' name="upload" class="btn btn-success btn-block">
+                            {{showMsg}}
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <label>Result of prediction</label>
+            <br>
+            <br>
+            {% for table in tables %}
+            {{titles[loop.index]}}
+            {{ table|safe }}
+            {% endfor %}
+
+
+        </div>
+    </div>
+</div>
+
+{%endblock%}

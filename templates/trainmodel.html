@@ -1,0 +1,61 @@
+{%extends "layout.html"%}
+
+{%block content%}
+
+<div class="topnav" id="myTopnav">
+
+    <a href="{{ url_for('home')}}">Single Prediction</a>
+    <a href="{{ url_for('multiplepred')}}">Multiple Prediction</a>
+    <a href="{{ url_for('trainmodel')}}" class="active">Model Train</a>
+    <a href="{{ url_for('about')}}">about</a>
+
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+
+
+<div class="trainmodel">
+    <div class="container">
+
+        <h3>Import data and train the model</h3>
+        <hr>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="form-group">
+                    <form action="/upload" method="POST" enctype="multipart/form-data"></form>
+                    <div class="col-md-2">
+                        <label>Choose a file to upload</label>
+                        <input type="file" name="file" value="file">
+                    </div>
+
+                    <div class="col-md-2">
+                        <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block">
+                        {{msg}}
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="form-group">
+                    <form id="containerForm" class="form-horizontal" method="POST" action="/train">
+                        <div class="col-md-2">
+                            <label>Train the model</label>
+                        </div>
+
+                        <div class="col-md-2">
+                            <input class='btn btn-primary btn-block' type='submit' value='Train model' </button>
+                            {{modelTrain}}
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{%endblock%}

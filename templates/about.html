@@ -1,0 +1,23 @@
+{%extends "layout.html"%}
+
+{%block content%}
+
+<div class="topnav" id="myTopnav">
+  
+  <a href="{{ url_for('home')}}" >Single Prediction</a>
+  <a href="{{ url_for('multiplepred')}}" >Multiple Prediction</a>
+  <a href="{{ url_for('trainmodel')}}" >Model Train</a>
+  <a href="{{ url_for('about')}}" class="active">about</a>
+
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+  </a>
+</div>
+<div class="home">
+
+
+</div>
+{%endblock%}
+  
+ 
+
