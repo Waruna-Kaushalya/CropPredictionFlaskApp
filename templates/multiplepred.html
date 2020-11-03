@@ -7,7 +7,7 @@
     <a href="{{ url_for('home')}}">Single Prediction</a>
     <a href="{{ url_for('multiplepred')}}" class="active">Multiple Prediction</a>
     <a href="{{ url_for('trainmodel')}}">Model Train</a>
-    <a href="{{ url_for('about')}}">about</a>
+    <a href="{{ url_for('about')}}">About</a>
 
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -18,10 +18,12 @@
 <div class="multiplepred">
     <div class="container">
 
-        <h3>Performing a series of predictions simultaneously</h3>
-        <hr>
 
-        <div class="ccol align-self-center">
+
+        <div class="col-md-10">
+
+            <h3>Performing a series of predictions simultaneously</h3>
+            <hr>
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
             {% for category, message in messages %}

@@ -35,6 +35,7 @@ s3 = boto3.client('s3',
 
 BUCKET_NAME = config.S3_BUCKET
 
+
 @app.route("/predict", methods=['POST'])
 def predict():
         if request.method == 'POST':
@@ -68,43 +69,9 @@ def predict():
             except:
                 flash("Please upload csv file and train the model" , 'error')
                 return render_template('home.html')
-            flash('Prediction done' , 'success')
+            flash('Prediction done!' , 'success')
             return render_template('home.html', extentPrediction = extentPrediction, predictionProduction = productionPrediction)
 
-
-@app.route("/train", methods=['POST'])
-def train():
-        if request.method == 'POST':
-            try:
-                import model
-            except ValueError:
-                flash("Model is not trained. Please upload csv file and train the model!" , 'error')
-                return render_template('trainmodel.html')
-        flash('Model is trained' , 'success')
-        return render_template('trainmodel.html')
-
-
-@app.route('/upload',methods=['POST'])
-def upload():
-    print("abc")
-    if request.method == 'POST':
-        img = request.files['file']
-        if img:
-            try:
-                filename = secure_filename(img.filename)
-                filename = "VegetableAndClimateData.csv"
-                img.save(filename)
-                s3.upload_file(
-                    Bucket = BUCKET_NAME,
-                    Filename=filename,
-                    Key = filename
-                )
-
-            except ValueError:
-                flash("File not uploaded!" , 'error')
-                return redirect(url_for('trainmodel.html'))
-        flash('File is uploadedd!' , 'success')
-        return redirect(url_for('trainmodel'))
 
 
 @app.route('/csvimport',methods=['POST'])
@@ -123,9 +90,9 @@ def csvpredict():
                     Key = filename
                 )
             except ValueError:
-                flash('File is not uploaded!' , 'error')
+                flash('the file is not uploaded! Check internet connection' , 'error')
                 return render_template('multiplepred.html')
-        flash('File is uploaded!' , 'success')
+        flash('The file is uploaded!' , 'success')
         return render_template('multiplepred.html')
 
 
@@ -154,9 +121,44 @@ def show_tables():
             except ValueError:
                 flash('Data cannot display!' , 'error')
                 return render_template('multiplepred.html')
-        flash('Predicted data displey!' , 'success')
+        flash('The predicted answer was displayed! ' , 'success')
         return render_template('multiplepred.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
     
+
+
+@app.route('/upload',methods=['POST'])
+def upload():
+    print("abc")
+    if request.method == 'POST':
+        img = request.files['file']
+        if img:
+            try:
+                filename = secure_filename(img.filename)
+                filename = "VegetableAndClimateData.csv"
+                img.save(filename)
+                s3.upload_file(
+                    Bucket = BUCKET_NAME,
+                    Filename=filename,
+                    Key = filename
+                )
+            except ValueError:
+                flash("The file is not uploaded!" , 'error')
+                return render_template('trainmodel.html')
+        flash('The file is uploaded!' , 'success')
+        return render_template('trainmodel.html')
+
+
+
+@app.route("/train", methods=['POST'])
+def train():
+        if request.method == 'POST':
+            try:
+                import model
+            except ValueError:
+                flash("Model is not trained. Please upload csv file and train the model!" , 'error')
+                return render_template('trainmodel.html')
+        flash('Model is trained' , 'success')
+        return render_template('trainmodel.html')
 
 #Create local server and run the app in that server
 if __name__ == "__main__":

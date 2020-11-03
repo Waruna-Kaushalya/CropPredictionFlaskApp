@@ -7,7 +7,7 @@
     <a href="{{ url_for('home')}}">Single Prediction</a>
     <a href="{{ url_for('multiplepred')}}">Multiple Prediction</a>
     <a href="{{ url_for('trainmodel')}}" class="active">Model Train</a>
-    <a href="{{ url_for('about')}}">about</a>
+    <a href="{{ url_for('about')}}">About</a>
 
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -18,30 +18,32 @@
 <div class="trainmodel">
     <div class="container">
 
-        <h3>Import data and train the model</h3>
-        <hr>
 
-        <div class="ccol align-self-center">
+
+        <div class="col-md-10">
+
+            <h3>Import Data and Train the Model</h3>
+            <hr>
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
             {% for category, message in messages %}
             {% if category == 'success' %}
             <div class="alert alert-success mb-3" role="alert">
-              <center>
-                {{ message }}
-              </center>
+                <center>
+                    {{ message }}
+                </center>
             </div>
             {% endif %}
-      
+
             {% if category == 'error' %}
             <div class="alert alert-danger mb-3" role="alert">
-              {{ message }}
+                {{ message }}
             </div>
             {% endif %}
             {% endfor %}
             {% endif %}
             {% endwith%}
-          </div>
+        </div>
       
 
         <br>

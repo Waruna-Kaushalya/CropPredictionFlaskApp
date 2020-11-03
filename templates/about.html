@@ -3,21 +3,46 @@
 {%block content%}
 
 <div class="topnav" id="myTopnav">
-  
-  <a href="{{ url_for('home')}}" >Single Prediction</a>
-  <a href="{{ url_for('multiplepred')}}" >Multiple Prediction</a>
-  <a href="{{ url_for('trainmodel')}}" >Model Train</a>
-  <a href="{{ url_for('about')}}" class="active">about</a>
 
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-      <i class="fa fa-bars"></i>
-  </a>
+    <a href="{{ url_for('home')}}">Single Prediction</a>
+    <a href="{{ url_for('multiplepred')}}">Multiple Prediction</a>
+    <a href="{{ url_for('trainmodel')}}">Model Train</a>
+    <a href="{{ url_for('about')}}" class="active">About</a>
+
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
 </div>
-<div class="home">
+<div class="about">
 
 
-</div>
-{%endblock%}
-  
- 
 
+    <div class="container">
+
+        <!--  -->
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-5">
+                    <br>
+                    <h2><b>
+                            Abut VEGEPredictor
+                        </b>
+                    </h2>
+                    <h3>
+                        This VEGEPredictor web application was implemented for final year individual research of BSc
+                        (Hons) Computing - National Institute of Business Management degree program. This web
+                        application identifies past data patterns and predicts the extend of land to be cultivated and
+                        the harvest accordingly. This web application's main objective is to educate farmers through
+                        farmer regulators to reduce the amount of excess vegetables by cultivating according to a
+                        pattern.
+                    </h3>
+
+                </div>
+                <div class="col-md-5">
+                    <img src="/static/pics/cover.png" height="450" style="position:left">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {%endblock%}
