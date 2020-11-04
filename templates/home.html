@@ -4,7 +4,7 @@
 
 <div class="topnav" id="myTopnav">
 
-  
+
   <a href="{{ url_for('home')}}" class="active">Single Prediction</a>
   <a href="{{ url_for('multiplepred')}}">Multiple Prediction</a>
   <a href="{{ url_for('trainmodel')}}">Model Train</a>
@@ -23,6 +23,15 @@
       <h3>Performing a single prediction</h3>
       <hr>
 
+      <div class="alert alert-warning" role="alert">
+        Firstly, you should go to the <a href="{{ url_for('trainmodel')}}" class="alert-link">Model Train</a> and upload
+        your data to train the model!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
       {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
       {% for category, message in messages %}
@@ -33,7 +42,6 @@
         </center>
       </div>
       {% endif %}
-
       {% if category == 'error' %}
       <div class="alert alert-danger mb-3" role="alert">
         {{ message }}
@@ -140,7 +148,7 @@
             <div class="col-md-5">
               <div class="alert alert-info" role="alert">
                 <h3>
-                  Extent: {{extentPrediction}}Ht
+                  Extent: <b>{{extentPrediction}}</b> Ht
                 </h3>
               </div>
 
@@ -148,7 +156,7 @@
             <div class="col-md-5">
               <div class="alert alert-info" role="alert">
                 <h3>
-                  Production: {{predictionProduction}} Mt
+                  Production: <b>{{predictionProduction}}</b> Mt
                 </h3>
               </div>
             </div>

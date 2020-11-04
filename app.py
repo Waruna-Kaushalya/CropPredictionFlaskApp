@@ -157,7 +157,8 @@ def train():
             except ValueError:
                 flash("Model is not trained. Please upload csv file and train the model!" , 'error')
                 return render_template('trainmodel.html')
-        flash('Model is trained' , 'success')
+        flash('Model is trained!' , 'success')
+        flash('Model is trained!' , 'trained')
         return render_template('trainmodel.html')
 
 #Create local server and run the app in that server
