@@ -154,6 +154,7 @@ def train():
         if request.method == 'POST':
             try:
                 import model
+                model.trainModel()
             except ValueError:
                 flash("Model is not trained. Please upload csv file and train the model!" , 'error')
                 return render_template('trainmodel.html')
