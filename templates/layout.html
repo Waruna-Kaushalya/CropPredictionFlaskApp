@@ -17,33 +17,26 @@
 
     <title>Upcountry vegetable crop yield prediction</title>
 
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/menuStyle.css') }}">
+
 
 </head>
 
 <body>
     <center>
         <img src="/static/pics/vegepredictorlogo2.png" height="62" style="position:left">
-
-
     </center>
-    
-        {%block content%}
-        {%endblock%}
 
-    <script>
-        function myFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
-                x.className += " responsive";
-            } else {
-                x.className = "topnav";
-            }
-        }
-    </script>
+    {%block content%}
+    {%endblock%}
+
     <script type="text/javascript" src="{{ url_for('static', filename='validatorcustomescript.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='bootstrapvalidator.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='navMenu.js') }}"></script>
 
 </body>
 

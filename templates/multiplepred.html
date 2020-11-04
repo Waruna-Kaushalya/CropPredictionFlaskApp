@@ -43,6 +43,20 @@
             {% endfor %}
             {% endif %}
             {% endwith%}
+
+                        <!-- waiting -->
+                        <center>
+                            <div id="loading" style="display:none;"><img src="/static/pics/waiting2.gif" height="200" />
+                            </div>
+                        </center>
+                        <!-- End waiting -->
+            
+                        <!-- waiting -->
+                        <center>
+                            <div id="uploading" style="display:none;"><img src="/static/pics/uploading.gif" height="200" />
+                            </div>
+                        </center>
+                        <!-- End waiting -->
         </div>
 
 
@@ -61,7 +75,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block">
+                            <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block" onclick="$('#uploading').show();">
                             {{msg}}
                         </div>
                     </form>
@@ -76,7 +90,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <input class='btn btn-primary btn-block' type='submit' value='Train model' </button>
+                            <input class='btn btn-primary btn-block' type='submit' value='Train model' onclick="$('#loading').show();">
                             {{modelTrain}}
                         </div>
                     </form>
