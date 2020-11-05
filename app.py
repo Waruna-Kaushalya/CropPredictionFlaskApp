@@ -122,7 +122,7 @@ def show_tables():
                 flash('Data cannot display!' , 'error')
                 return render_template('multiplepred.html')
         flash('The predicted answer was displayed! ' , 'success')
-        return render_template('multiplepred.html',  tables=[df.to_html(classes='data')], titles=df.columns.values)
+        return render_template('multiplepred.html', tables=[df.to_html(classes='data')], titles=df.columns.values)
     
 
 

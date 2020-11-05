@@ -43,23 +43,23 @@
       <div class="alert alert-success" role="alert">
         <center>
           {{ message }}
-      
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </center>
+
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </center>
       </div>
       {% endif %}
       {% if category == 'error' %}
       <div class="alert alert-danger" role="alert">
         <center>
-    
-        {{ message }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-              
-      </center>
+
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+        </center>
       </div>
       {% endif %}
       {% endfor %}
@@ -77,7 +77,6 @@
         <div class="row">
           <div class="form-group">
             <div class="col-md-5">
-
               <label for="DistrictName">Choose a District:</label>
               <select name="DistrictName" id="DistrictName" class="form-control">
                 <option value="[1,0,0,0,0]">Badulla</option>
