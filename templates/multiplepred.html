@@ -2,8 +2,8 @@
 
 {%block content%}
 
+<!-- Menu -->
 <div class="topnav" id="myTopnav">
-
     <a href="{{ url_for('home')}}">Single Prediction</a>
     <a href="{{ url_for('multiplepred')}}" class="active">Multiple Prediction</a>
     <a href="{{ url_for('trainmodel')}}">Model Train</a>
@@ -13,15 +13,13 @@
         <i class="fa fa-bars"></i>
     </a>
 </div>
-
+<!-- End Menu -->
 
 <div class="multiplepred">
     <div class="container">
 
-
-
         <div class="col-md-10">
-
+            <!-- Flash alert -->
             <h3>Performing a series of predictions simultaneously</h3>
             <hr>
             {% with messages = get_flashed_messages(with_categories=true) %}
@@ -31,40 +29,36 @@
             <div class="alert alert-success mb-3" role="alert">
                 <center>
                     {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                 </center>
             </div>
             {% endif %}
 
             {% if category == 'error' %}
             <div class="alert alert-danger mb-3" role="alert">
-                {{ message }}
+                <center>
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                </center>
+                
             </div>
             {% endif %}
             {% endfor %}
             {% endif %}
             {% endwith%}
 
-                        <!-- waiting -->
-                        <center>
-                            <div id="loading" style="display:none;"><img src="/static/pics/waiting2.gif" height="200" />
-                            </div>
-                        </center>
-                        <!-- End waiting -->
-            
-                        <!-- waiting -->
-                        <center>
-                            <div id="uploading" style="display:none;"><img src="/static/pics/uploading.gif" height="200" />
-                            </div>
-                        </center>
-                        <!-- End waiting -->
+            <!-- End Flash alert -->
+
         </div>
-
-
 
         <br>
         <div class="container">
 
-            <!--  -->
+            <!-- File upload -->
             <div class="row">
                 <div class="form-group">
                     <form action="/csvimport" method="POST" enctype="multipart/form-data">
@@ -75,13 +69,18 @@
                         </div>
 
                         <div class="col-md-2">
-                            <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block" onclick="$('#uploading').show();">
+                                <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block"
+                                onclick="$('#uploading').show();" data-toggle="modal" data-target="#uploadingModel">
                             {{msg}}
                         </div>
                     </form>
                 </div>
             </div>
+            <!-- End File upload -->
+
             <hr>
+
+            <!-- Model train -->
             <div class="row">
                 <div class="form-group">
                     <form id="containerForm" class="form-horizontal" method="POST" action="/predictcsvfile">
@@ -90,14 +89,17 @@
                         </div>
 
                         <div class="col-md-2">
-                            <input class='btn btn-primary btn-block' type='submit' value='Train model' onclick="$('#loading').show();">
-                            {{modelTrain}}
+                            <input class='btn btn-primary btn-block' type='submit' value='Train model'
+                                onclick="$('#loading').show();" data-toggle="modal" data-target="#loadingModel">
                         </div>
                     </form>
                 </div>
             </div>
+            <!-- End Model train -->
+
             <hr>
 
+            <!-- Show the result -->
             <div class="row">
                 <div class="form-group">
                     <form action="/showcsvtables" method="POST" enctype="multipart/form-data">
@@ -107,7 +109,7 @@
 
                         <div class="col-md-2">
                             <input type='submit' value='Show result' name="upload" class="btn btn-success btn-block">
-                            {{showMsg}}
+
                         </div>
                     </form>
                 </div>
@@ -120,7 +122,7 @@
             {{titles[loop.index]}}
             {{ table|safe }}
             {% endfor %}
-
+            <!-- End Show the result -->
 
         </div>
     </div>

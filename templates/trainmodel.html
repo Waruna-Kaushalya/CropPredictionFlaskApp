@@ -1,7 +1,7 @@
 {%extends "layout.html"%}
-
 {%block content%}
 
+<!-- Menu -->
 <div class="topnav" id="myTopnav">
 
     <a href="{{ url_for('home')}}">Single Prediction</a>
@@ -13,15 +13,17 @@
         <i class="fa fa-bars"></i>
     </a>
 </div>
+<!-- End Menu -->
 
 
 <div class="trainmodel">
     <div class="container">
 
         <div class="col-md-10">
-
             <h3>Import Data and Train the Model</h3>
             <hr>
+
+            <!-- Flash alert -->
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
             {% for category, message in messages %}
@@ -30,6 +32,9 @@
             <div class="alert alert-success mb-3" role="alert">
                 <center>
                     {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </center>
             </div>
             {% endif %}
@@ -48,61 +53,45 @@
 
             {% if category == 'error' %}
             <div class="alert alert-danger mb-3" role="alert">
-                {{ message }}
+                <center>
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </center>
             </div>
             {% endif %}
             {% endfor %}
             {% endif %}
             {% endwith%}
+            <!-- End Flash alert -->
 
-            <!-- waiting -->
-            <center>
-               
-                <div id="loading" style="display:none;">
-                    <img src="/static/pics/waiting2.gif" height="200" />
-                    
-                </div>
-            </center>
-            <!-- End waiting -->
-
-            <!-- waiting -->
-            <center>
-                <div id="uploading" style="display:none;">
-                    <img src="/static/pics/uploading.gif" height="200" />
-                </div>
-            </center>
-            <!-- End waiting -->
-            
         </div>
 
-
-
-
         <br>
+
         <div class="container">
+
+            <!-- File upload -->
             <div class="row">
                 <div class="form-group">
                     <form action="/upload" method="POST" enctype="multipart/form-data">
                         <div class="col-md-3">
-
-
-
                             <label>Choose a file to upload</label>
                             <input type="file" name="file" value="file">
                         </div>
-
                         <div class="col-md-2">
                             <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block"
-                                onclick="$('#uploading').show();">
-
+                                onclick="$('#uploading').show();" data-toggle="modal" data-target="#uploadingModel">
                         </div>
                     </form>
                 </div>
             </div>
+            <!-- End File upload -->
 
             <hr>
 
-
+            <!-- Model train -->
             <div class="row">
                 <div class="form-group">
                     <form id="containerForm" class="form-horizontal" method="POST" action="/train">
@@ -111,30 +100,16 @@
                         </div>
 
                         <div class="col-md-2">
-
-                            <div class="spinner-grow" role="status">
-                                <span class="sr-only">Loading...</span>
-                            </div>
                             <input class='btn btn-primary btn-block' type='submit' value='Train model'
-                                onclick="$('#loading').show();">
-
+                                onclick="$('#loading').show();" data-toggle="modal" data-target="#loadingModel">
                         </div>
+
                     </form>
                 </div>
             </div>
+            <!-- End Model train -->
 
         </div>
-
-
-
-
-
-
-
-
-
-        
     </div>
-
 </div>
 {%endblock%}

@@ -2,9 +2,8 @@
 
 {%block content%}
 
+<!-- Menu -->
 <div class="topnav" id="myTopnav">
-
-
   <a href="{{ url_for('home')}}" class="active">Single Prediction</a>
   <a href="{{ url_for('multiplepred')}}">Multiple Prediction</a>
   <a href="{{ url_for('trainmodel')}}">Model Train</a>
@@ -14,6 +13,7 @@
     <i class="fa fa-bars"></i>
   </a>
 </div>
+<!-- End Menu -->
 
 
 <div class="home">
@@ -23,6 +23,7 @@
       <h3>Performing a single prediction</h3>
       <hr>
 
+      <!-- Alerts -->
       <div class="alert alert-warning" role="alert">
         <center>
           Firstly, you should go to the <a href="{{ url_for('trainmodel')}}" class="alert-link">Model Train</a> and
@@ -39,27 +40,40 @@
       {% if messages %}
       {% for category, message in messages %}
       {% if category == 'success' %}
-      <div class="alert alert-success mb-3" role="alert">
+      <div class="alert alert-success" role="alert">
         <center>
           {{ message }}
-        </center>
+      
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </center>
       </div>
       {% endif %}
       {% if category == 'error' %}
-      <div class="alert alert-danger mb-3" role="alert">
+      <div class="alert alert-danger" role="alert">
+        <center>
+    
         {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+              
+      </center>
       </div>
       {% endif %}
       {% endfor %}
       {% endif %}
       {% endwith%}
+
+      <!-- End Alerts -->
     </div>
 
-
     <br>
+
     <div class="container">
       <form id="containerForm" class="form-horizontal" method="POST" action="/predict">
-
+        <!-- Input Data -->
         <div class="row">
           <div class="form-group">
             <div class="col-md-5">
@@ -128,7 +142,9 @@
           </div>
         </div>
 
+        <!-- End Input Data -->
 
+        <!-- Prediction btn -->
         <div class="row">
           <div class="form-group">
             <div class="col-md-5">
@@ -145,7 +161,9 @@
             </div>
           </div>
         </div>
+        <!-- End Prediction btn -->
 
+        <!-- Result -->
         <div class="row">
           <div class="form-group">
             <div class="col-md-5">
@@ -164,6 +182,7 @@
               </div>
             </div>
           </div>
+          <!-- End Result -->
 
       </form>
     </div>
