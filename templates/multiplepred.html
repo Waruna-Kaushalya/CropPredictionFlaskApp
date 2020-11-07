@@ -7,7 +7,9 @@
     <a href="{{ url_for('home')}}">Single Prediction</a>
     <a href="{{ url_for('multiplepred')}}" class="active">Multiple Prediction</a>
     <a href="{{ url_for('trainmodel')}}">Model Train</a>
-    <a href="{{ url_for('about')}}">About</a>
+    <a href="{{ url_for('about')}}">About VEGEPredictor</a>
+    <a href="{{ url_for('howvegepredictorwork')}}">How VEGEPredictor Work</a>
+
 
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -89,7 +91,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <input class='btn btn-primary btn-block' type='submit' value='Train model'
+                            <input class='btn btn-primary btn-block' type='submit' value='Predict the values'
                                 onclick="$('#loading').show();" data-toggle="modal" data-target="#loadingModel">
                         </div>
                     </form>
@@ -113,7 +115,7 @@
 
                         </div>
                     </form>
-                    
+
                 </div>
             </div>
             <br>

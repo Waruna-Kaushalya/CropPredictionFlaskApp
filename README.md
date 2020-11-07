@@ -8,5 +8,3 @@ Flask Web Application For Crop Yield Prediction
 - Multiple Linear Regression Algorithm
 
 https://croppredictionflaskapp.herokuapp.com
-
-AWS Token : aws sts get-session-token --duration-seconds 10000

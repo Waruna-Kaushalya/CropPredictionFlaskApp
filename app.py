@@ -10,6 +10,7 @@ import boto3
 import os
 import config
 
+# routes call
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'thisissecretkey'
 @app.route("/")
@@ -24,10 +25,16 @@ def multiplepred():
 def trainmodel():
     return render_template('trainmodel.html')
 
+@app.route("/howvegepredictorwork")
+def howvegepredictorwork():
+    return render_template('howvegepredictorwork.html')
+
 @app.route("/about")
 def about():
     return render_template('about.html')
 
+
+# aws cloud configurations
 s3 = boto3.client('s3',
                     aws_access_key_id =config.S3_KEY,
                     aws_secret_access_key =config.S3_SECRET
@@ -35,7 +42,7 @@ s3 = boto3.client('s3',
 
 BUCKET_NAME = config.S3_BUCKET
 
-
+# import model and single prediction
 @app.route("/predict", methods=['POST'])
 def predict():
         if request.method == 'POST':
@@ -73,7 +80,7 @@ def predict():
             return render_template('home.html', extentPrediction = extentPrediction, predictionProduction = productionPrediction)
 
 
-
+# csv import for multiple prediction
 @app.route('/csvimport',methods=['POST'])
 def csvpredict():
     print("abc")
@@ -96,7 +103,7 @@ def csvpredict():
         return render_template('multiplepred.html')
 
 
-
+# multiple prediction using csv file
 @app.route("/predictcsvfile", methods=['POST'])
 def predictCSVFile():
         if request.method == 'POST':
@@ -110,7 +117,7 @@ def predictCSVFile():
         return render_template('multiplepred.html')
 
 
-
+# show the multiple prediction result as table
 @app.route("/showcsvtables", methods=['POST'])
 def show_tables():
         if request.method == 'POST':
@@ -125,7 +132,7 @@ def show_tables():
         return render_template('multiplepred.html', tables=[df.to_html(classes='data')], titles=df.columns.values)
     
 
-
+# upload csv data for single prediction
 @app.route('/upload',methods=['POST'])
 def upload():
     print("abc")
@@ -148,7 +155,7 @@ def upload():
         return render_template('trainmodel.html')
 
 
-
+# train and export the model for single prediction
 @app.route("/train", methods=['POST'])
 def train():
         if request.method == 'POST':
