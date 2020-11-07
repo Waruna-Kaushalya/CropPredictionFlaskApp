@@ -9,7 +9,7 @@
   <a href="{{ url_for('trainmodel')}}">Model Train</a>
   <a href="{{ url_for('about')}}">About VEGEPredictor</a>
   <a href="{{ url_for('howvegepredictorwork')}}">How VEGEPredictor Work</a>
- 
+
 
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
@@ -37,7 +37,7 @@
         </center>
       </div>
 
-<!-- Django code -->
+      <!-- Django code -->
       {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
       {% for category, message in messages %}
@@ -69,6 +69,7 @@
       {% endwith%}
 
       <!-- End Alerts -->
+
     </div>
 
     <br>
@@ -77,8 +78,8 @@
       <form id="containerForm" class="form-horizontal" method="POST" action="/predict">
         <!-- Input Data -->
         <div class="row">
-          <div class="form-group">
-            <div class="col-md-5">
+          <div class="col-md-5">
+            <div class="form-group">
               <label for="DistrictName">Choose a District:</label>
               <select name="DistrictName" id="DistrictName" class="form-control">
                 <option value="[1,0,0,0,0]">Badulla</option>
@@ -88,8 +89,10 @@
                 <option value="[0,0,0,0,1]">Ratnapura</option>
               </select>
             </div>
+          </div>
 
-            <div class="col-md-5">
+          <div class="col-md-5">
+            <div class="form-group" style="padding-left:1em">
               <label for="VegetableType">Choose a vegetable type:</label>
               <select name="VegetableType" id="VegetableType" class="form-control">
                 <option value="[1,0,0,0,0]">Beans</option>
@@ -104,16 +107,18 @@
 
 
         <div class="row">
-          <div class="form-group">
-            <div class="col-md-5">
+          <div class="col-md-5">
+            <div class="form-group">
               <label>Rainfall</label>
               <div class="input-group">
                 <input type="text" class="form-control" name="Rainfall" />
                 <span class="input-group-addon">mm</span>
               </div>
             </div>
+          </div>
 
-            <div class="col-md-5">
+          <div class="col-md-5">
+            <div class="form-group" style="padding-left:1em">
               <label>Maximum Temperature:</label>
               <div class="input-group">
                 <input type="text" class="form-control" name="MaximumTemperature" />
@@ -123,17 +128,19 @@
           </div>
         </div>
 
-
         <div class="row">
-          <div class="form-group">
-            <div class="col-md-5">
+          <div class="col-md-5">
+            <div class="form-group">
               <label>Minimum Temperature:</label>
               <div class="input-group">
                 <input type="text" class="form-control" name="MinimumTemperature" />
                 <span class="input-group-addon">c</span>
               </div>
             </div>
-            <div class="col-md-5">
+          </div>
+
+          <div class="col-md-5">
+            <div class="form-group" style="padding-left:1em">
               <label>Relative Humidity:</label>
               <div class="input-group">
                 <input type="text" class="form-control" name="RelativeHumidity" />
@@ -147,15 +154,18 @@
 
         <!-- Prediction btn -->
         <div class="row">
-          <div class="form-group">
-            <div class="col-md-5">
+          <div class="col-md-5">
+            <div class="form-group">
               <label>Pressure:</label>
               <div class="input-group">
                 <input type="text" class="form-control" name="Pressure" />
                 <span class="input-group-addon">kPa</span>
               </div>
             </div>
-            <div class="col-md-5">
+          </div>
+
+          <div class="col-md-5">
+            <div class="form-group" style="padding-left:1em">
               <label>Predict the values</label>
               <input class="btn btn-primary btn-block" type='submit' value='Predict the values'></button>
 
@@ -165,17 +175,20 @@
         <!-- End Prediction btn -->
 
         <!-- Result -->
+
         <div class="row">
-          <div class="form-group">
-            <div class="col-md-5">
+          <div class="col-md-5">
+            <div class="form-group">
               <div class="alert alert-info" role="alert">
                 <h3>
                   Extent: <b>{{extentPrediction}}</b> Ht
                 </h3>
               </div>
-
             </div>
-            <div class="col-md-5">
+
+          </div>
+          <div class="col-md-5">
+            <div class="form-group" style="padding-left:1em">
               <div class="alert alert-info" role="alert">
                 <h3>
                   Production: <b>{{predictionProduction}}</b> Mt
@@ -183,6 +196,7 @@
               </div>
             </div>
           </div>
+
           <!-- End Result -->
 
       </form>
