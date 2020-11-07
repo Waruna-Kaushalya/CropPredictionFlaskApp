@@ -114,6 +114,7 @@ def predictCSVFile():
             except ValueError:
                 flash('Data not predicted!' , 'error')
                 return render_template('multiplepred.html')
+        time.sleep(2)
         flash('Data is predicted!' , 'success')
         return render_template('multiplepred.html')
 
@@ -126,10 +127,11 @@ def show_tables():
                 datasetCsv = pd.read_csv('csvResult.csv')
                 df = pd.DataFrame(datasetCsv)
                 data = datasetCsv
+                time.sleep(2)
             except ValueError:
                 flash('Data cannot display!' , 'error')
                 return render_template('multiplepred.html')
-        time.sleep(3)
+        time.sleep(2)
         flash('The predicted answer was displayed! ' , 'success')
         return render_template('multiplepred.html', tables=[df.to_html(classes='data')], titles=df.columns.values)
     
