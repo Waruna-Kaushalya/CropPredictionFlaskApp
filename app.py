@@ -77,8 +77,11 @@ def predict():
             except:
                 flash("Please upload csv file and train the model" , 'error')
                 return render_template('home.html')
-            flash('Prediction done!' , 'success')
-            return render_template('home.html', extentPrediction = extentPrediction, predictionProduction = productionPrediction)
+            else:
+                flash('Prediction done!' , 'success')
+                return render_template('home.html', extentPrediction = extentPrediction, predictionProduction = productionPrediction)
+
+            
 
 
 # csv import for multiple prediction
@@ -100,8 +103,10 @@ def csvpredict():
             except ValueError:
                 flash('the file is not uploaded! Check internet connection' , 'error')
                 return render_template('multiplepred.html')
-        flash('The file is uploaded!' , 'success')
-        return render_template('multiplepred.html')
+            else:
+                flash('The file is uploaded!' , 'success')
+                return render_template('multiplepred.html')
+       
 
 
 # multiple prediction using csv file
@@ -114,9 +119,12 @@ def predictCSVFile():
             except ValueError:
                 flash('Data not predicted!' , 'error')
                 return render_template('multiplepred.html')
-        time.sleep(2)
-        flash('Data is predicted!' , 'success')
-        return render_template('multiplepred.html')
+            else:
+                time.sleep(2)
+                flash('Data is predicted!' , 'success')
+                return render_template('multiplepred.html')
+
+        
 
 
 # show the multiple prediction result as table
@@ -124,23 +132,22 @@ def predictCSVFile():
 def show_tables():
         if request.method == 'POST':
             try:
-                datasetCsv = pd.read_csv('csvResult.csv')
-                time.sleep(2)
-                df = pd.DataFrame(datasetCsv)
-                time.sleep(2)
+                # datasetCsv = pd.read_csv('csvResult.csv')
+                # df = pd.DataFrame(datasetCsv)
+                # time.sleep(2)
+                df = pd.read_csv("csvResult.csv")
+                temp = df.to_dict('records')
+                columnNames = df.columns.values
+                return render_template('multiplepred.html', records=temp, colnames=columnNames)
             except:
                 flash('Table cannot be show' , 'error')
                 return render_template('multiplepred.html')
-            else:
-                flash('The predicted answer was displayed! ' , 'success')
-                return render_template('multiplepred.html', tables=[df.to_html(classes='datasetCsv')])
 
   
 
 # upload csv data for single prediction
 @app.route('/upload',methods=['POST'])
 def upload():
-    print("abc")
     if request.method == 'POST':
         img = request.files['file']
         if img:
@@ -156,8 +163,12 @@ def upload():
             except ValueError:
                 flash("The file is not uploaded!" , 'error')
                 return render_template('trainmodel.html')
-        flash('The file is uploaded!' , 'success')
-        return render_template('trainmodel.html')
+            else:
+                flash('The file is uploaded!' , 'success')
+                return render_template('trainmodel.html')
+
+        
+        
 
 
 # train and export the model for single prediction
@@ -170,9 +181,12 @@ def train():
             except ValueError:
                 flash("Model is not trained. Please upload csv file and train the model!" , 'error')
                 return render_template('trainmodel.html')
-        flash('Model is trained!' , 'success')
-        flash('Model is trained!' , 'trained')
-        return render_template('trainmodel.html')
+            else:
+                flash('Model is trained!' , 'success')
+                flash('Model is trained!' , 'trained')
+                return render_template('trainmodel.html')
+
+        
 
 #Create local server and run the app in that server
 if __name__ == "__main__":

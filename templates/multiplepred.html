@@ -33,7 +33,7 @@
                     {{ message }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                      </button>
+                    </button>
                 </center>
             </div>
             {% endif %}
@@ -44,9 +44,9 @@
                     {{ message }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                      </button>
+                    </button>
                 </center>
-                
+
             </div>
             {% endif %}
             {% endfor %}
@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="col-md-2">
-                                <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block"
+                            <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block"
                                 onclick="$('#uploading').show();" data-toggle="modal" data-target="#uploadingModel">
                             {{msg}}
                         </div>
@@ -123,9 +123,28 @@
             <br>
             <br>
 
-            {% for table in tables %}
+            <!-- {% for table in tables %}
             {{ table|safe }}
-            {% endfor %}
+            {% endfor %} -->
+
+            <table border="1">
+                <thead>
+                    <tr>
+                        {% for col in colnames %}
+                        <th>{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in records %}
+                    <tr>
+                        {% for col in colnames %}
+                        <td>{{ record[col] }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 
             <!-- End Show the result -->
 
