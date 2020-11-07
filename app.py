@@ -6,6 +6,7 @@ import numpy as np
 import json
 from werkzeug.utils import secure_filename
 import boto3
+import time
 # import tablib
 import os
 import config
@@ -128,6 +129,7 @@ def show_tables():
             except ValueError:
                 flash('Data cannot display!' , 'error')
                 return render_template('multiplepred.html')
+        time.sleep(3)
         flash('The predicted answer was displayed! ' , 'success')
         return render_template('multiplepred.html', tables=[df.to_html(classes='data')], titles=df.columns.values)
     
