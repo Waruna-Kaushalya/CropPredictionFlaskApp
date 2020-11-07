@@ -1,5 +1,4 @@
-{%extends "layout.html"%}
-{%block content%}
+{%extends "layout.html"%} {%block content%}
 
 <!-- Menu -->
 <div class="topnav" id="myTopnav">
@@ -26,11 +25,7 @@
             <hr>
 
             <!-- Flash alert -->
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            {% for category, message in messages %}
-
-            {% if category == 'success' %}
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} {% if category == 'success' %}
             <div class="alert alert-success mb-3" role="alert">
                 <center>
                     {{ message }}
@@ -39,21 +34,16 @@
                     </button>
                 </center>
             </div>
-            {% endif %}
-
-            {% if category == 'trained' %}
+            {% endif %} {% if category == 'trained' %}
             <div class="alert alert-warning" role="alert">
                 <center>
-                    Now you can go to <a href="{{ url_for('home')}}" class="alert-link">Single Prediction</a> and make a
-                    prediction!
+                    Now you can go to <a href="{{ url_for('home')}}" class="alert-link">Single Prediction</a> and make a prediction!
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </center>
             </div>
-            {% endif %}
-
-            {% if category == 'error' %}
+            {% endif %} {% if category == 'error' %}
             <div class="alert alert-danger mb-3" role="alert">
                 <center>
                     {{ message }}
@@ -62,10 +52,7 @@
                     </button>
                 </center>
             </div>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            {% endwith%}
+            {% endif %} {% endfor %} {% endif %} {% endwith%}
             <!-- End Flash alert -->
 
         </div>
@@ -83,8 +70,7 @@
                             <input type="file" name="file" value="file">
                         </div>
                         <div class="col-md-2">
-                            <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block"
-                                onclick="$('#uploading').show();" data-toggle="modal" data-target="#uploadingModel">
+                            <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block" onclick="$('#uploading').show();" data-toggle="modal" data-target="#uploadingModel">
                         </div>
                     </form>
                 </div>
@@ -102,8 +88,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <input class='btn btn-primary btn-block' type='submit' value='Train model'
-                                onclick="$('#loading').show();" data-toggle="modal" data-target="#loadingModel">
+                            <input class='btn btn-primary btn-block' type='submit' value='Train model' onclick="$('#loading').show();" data-toggle="modal" data-target="#loadingModel">
                         </div>
 
                     </form>

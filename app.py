@@ -83,7 +83,6 @@ def predict():
 
             
 
-
 # csv import for multiple prediction
 @app.route('/csvimport',methods=['POST'])
 def csvpredict():
@@ -109,40 +108,6 @@ def csvpredict():
        
 
 
-# # multiple prediction using csv file
-# @app.route("/predictcsvfile", methods=['POST'])
-# def predictCSVFile():
-#         if request.method == 'POST':
-#             try:
-#                 import csvDataPrediction
-#                 csvDataPrediction.trainModel()
-#             except ValueError:
-#                 flash('Data not predicted!' , 'error')
-#                 return render_template('multiplepred.html')
-#             else:
-#                 time.sleep(2)
-#                 flash('Data is predicted!' , 'success')
-#                 return render_template('multiplepred.html')
-       
-
-
-# # show the multiple prediction result as table
-# @app.route("/showcsvtables", methods=['POST'])
-# def show_tables():
-#         if request.method == 'POST':
-#             try:
-#                 df = pd.read_csv("csvResult.csv")
-#                 temp = df.to_dict('records')
-#                 columnNames = df.columns.values 
-#             except:
-#                 flash('Table cannot be show' , 'error')
-#                 return render_template('multiplepred.html')
-#             else:
-#                 time.sleep(2)
-#                 flash('The predicted answer was displayed! ' , 'success')
-#                 return render_template('multiplepred.html', records=temp, colnames=columnNames)
-
-
 # multiple prediction using csv file
 @app.route("/predictcsvfile", methods=['POST'])
 def predictCSVFile():
@@ -162,25 +127,6 @@ def predictCSVFile():
                 flash('The predicted answer was displayed! ' , 'success')
                 return render_template('multiplepred.html', records=temp, colnames=columnNames)
        
-
-
-# # show the multiple prediction result as table
-# @app.route("/showcsvtables", methods=['POST'])
-# def show_tables():
-#         if request.method == 'POST':
-#             try:
-#                 df = pd.read_csv("csvResult.csv")
-#                 temp = df.to_dict('records')
-#                 columnNames = df.columns.values 
-#             except:
-#                 flash('Table cannot be show' , 'error')
-#                 return render_template('multiplepred.html')
-#             else:
-#                 time.sleep(2)
-#                 flash('The predicted answer was displayed! ' , 'success')
-#                 return render_template('multiplepred.html', records=temp, colnames=columnNames)
-
-
 
 
 # upload csv data for single prediction
@@ -205,8 +151,6 @@ def upload():
                 flash('The file is uploaded!' , 'success')
                 return render_template('trainmodel.html')
 
-        
-        
 
 
 # train and export the model for single prediction

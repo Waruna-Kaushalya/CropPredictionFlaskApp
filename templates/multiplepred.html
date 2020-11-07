@@ -1,6 +1,4 @@
-{%extends "layout.html"%}
-
-{%block content%}
+{%extends "layout.html"%} {%block content%}
 
 <!-- Menu -->
 <div class="topnav" id="myTopnav">
@@ -23,11 +21,7 @@
         <div class="col-md-10">
             <!-- Flash alert -->
             <h3>Performing a series of predictions simultaneously</h3>
-            <hr>
-            {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-            {% for category, message in messages %}
-            {% if category == 'success' %}
+            <hr> {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} {% if category == 'success' %}
             <div class="alert alert-success mb-3" role="alert">
                 <center>
                     {{ message }}
@@ -36,9 +30,7 @@
                     </button>
                 </center>
             </div>
-            {% endif %}
-
-            {% if category == 'error' %}
+            {% endif %} {% if category == 'error' %}
             <div class="alert alert-danger mb-3" role="alert">
                 <center>
                     {{ message }}
@@ -48,10 +40,7 @@
                 </center>
 
             </div>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-            {% endwith%}
+            {% endif %} {% endfor %} {% endif %} {% endwith%}
 
             <!-- End Flash alert -->
 
@@ -71,9 +60,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block"
-                                onclick="$('#uploading').show();" data-toggle="modal" data-target="#uploadingModel">
-                            {{msg}}
+                            <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block" onclick="$('#uploading').show();" data-toggle="modal" data-target="#uploadingModel"> {{msg}}
                         </div>
                     </form>
                 </div>
@@ -92,8 +79,7 @@
                         </div>
 
                         <div class="col-md-2">
-                            <input class='btn btn-primary btn-block' type='submit' value='Show result'
-                                onclick="$('#showing').show();" data-toggle="modal" data-target="#showResult">
+                            <input class='btn btn-primary btn-block' type='submit' value='Show result' onclick="$('#showing').show();" data-toggle="modal" data-target="#showResult">
                         </div>
                     </form>
                 </div>

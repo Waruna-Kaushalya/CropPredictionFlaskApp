@@ -7,20 +7,15 @@
     <title>Upcountry vegetable crop yield prediction</title>
 
     <meta content="utf-8" http-equiv="encoding" ame="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"
-        id="bootstrap-css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/css/bootstrapvalidator.min.css"
-        rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/css/bootstrapvalidator.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/formvalidatecs.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/tablestyle2.css') }}">
-
-    <!--  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/menuStyle.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/stylesht.css') }}">
+
 
 </head>
 
@@ -29,13 +24,11 @@
         <img src="/static/pics/webapplogo.png" height="62" style="position:left">
     </center>
 
-    {%block content%}
-    {%endblock%}
+    {%block content%} {%endblock%}
 
     <!-- waiting -->
     <div id="uploading" style="display:none;">
-        <div class="modal fade bd-example-modal-sm" id="uploadingModel" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade bd-example-modal-sm" id="uploadingModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -57,8 +50,7 @@
 
     <!-- waiting -->
     <div id="loading" style="display:none;">
-        <div class="modal fade bd-example-modal-sm" id="loadingModel" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade bd-example-modal-sm" id="loadingModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -80,8 +72,7 @@
 
     <!-- waiting -->
     <div id="showing" style="display:none;">
-        <div class="modal fade bd-example-modal-sm" id="showResult" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal fade bd-example-modal-sm" id="showResult" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -104,7 +95,6 @@
     <script type="text/javascript" src="{{ url_for('static', filename='validatorcustomescript.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='bootstrapvalidator.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='navMenu.js') }}"></script>
-
 </body>
 
 </html>

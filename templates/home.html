@@ -1,199 +1,183 @@
-{%extends "layout.html"%}
-
-{%block content%}
+{%extends "layout.html"%} {%block content%}
 
 <!-- Menu -->
 <div class="topnav" id="myTopnav">
-  <a href="{{ url_for('home')}}" class="active">Single Prediction</a>
-  <a href="{{ url_for('multiplepred')}}">Multiple Prediction</a>
-  <a href="{{ url_for('trainmodel')}}">Model Train</a>
-  <a href="{{ url_for('about')}}">About VEGEPredictor</a>
-  <a href="{{ url_for('howvegepredictorwork')}}">How VEGEPredictor Work</a>
+    <a href="{{ url_for('home')}}" class="active">Single Prediction</a>
+    <a href="{{ url_for('multiplepred')}}">Multiple Prediction</a>
+    <a href="{{ url_for('trainmodel')}}">Model Train</a>
+    <a href="{{ url_for('about')}}">About VEGEPredictor</a>
+    <a href="{{ url_for('howvegepredictorwork')}}">How VEGEPredictor Work</a>
 
 
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
 </div>
 <!-- End Menu -->
 
 
 <div class="home">
-
-  <div class="container">
-    <div class="col-md-10">
-      <h3>Performing a single prediction</h3>
-      <hr>
-
-      <!-- Alerts -->
-      <div class="alert alert-warning" role="alert">
-        <center>
-          Firstly, you should go to the <a href="{{ url_for('trainmodel')}}" class="alert-link">Model Train</a> and
-          upload
-          your data to train the model!
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </center>
-      </div>
-
-      <!-- Django code -->
-      {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-      {% for category, message in messages %}
-      {% if category == 'success' %}
-      <div class="alert alert-success" role="alert">
-        <center>
-          {{ message }}
-
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </center>
-      </div>
-      {% endif %}
-      {% if category == 'error' %}
-      <div class="alert alert-danger" role="alert">
-        <center>
-
-          {{ message }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-
-        </center>
-      </div>
-      {% endif %}
-      {% endfor %}
-      {% endif %}
-      {% endwith%}
-
-      <!-- End Alerts -->
-
-    </div>
-
-    <br>
-
     <div class="container">
-      <form id="containerForm" class="form-horizontal" method="POST" action="/predict">
-        <!-- Input Data -->
-        <div class="row">
-          <div class="col-md-5">
-            <div class="form-group" style="padding-left:1em">
-              <label for="DistrictName">Choose a District:</label>
-              <select name="DistrictName" id="DistrictName" class="form-control">
-                <option value="[1,0,0,0,0]">Badulla</option>
-                <option value="[0,1,0,0,0]">Kandy</option>
-                <option value="[0,0,1,0,0]">Matale</option>
-                <option value="[0,0,0,1,0]">Nuwaraeliya</option>
-                <option value="[0,0,0,0,1]">Ratnapura</option>
-              </select>
+        <div class="col-md-10">
+            <h3>Performing a single prediction</h3>
+            <hr>
+
+            <!-- Alerts -->
+            <div class="alert alert-warning" role="alert">
+                <center>
+                    Firstly, you should go to the <a href="{{ url_for('trainmodel')}}" class="alert-link">Model Train</a> and upload your data to train the model!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span>
+                    </button>
+                </center>
             </div>
-          </div>
-          <div class="col-md-5">
-            <div class="form-group" style="padding-left:1em">
-              <label for="VegetableType">Choose a vegetable type:</label>
-              <select name="VegetableType" id="VegetableType" class="form-control">
-                <option value="[1,0,0,0,0]">Beans</option>
-                <option value="[0,1,0,0,0]">Beetroot</option>
-                <option value="[0,0,1,0,0]">Carrot</option>
-                <option value="[0,0,0,1,0]">Knohkhol</option>
-                <option value="[0,0,0,0,1]">Leeks</option>
-              </select>
+
+            <!-- Django code -->
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} {% if category == 'success' %}
+            <div class="alert alert-success" role="alert">
+                <center>
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </center>
             </div>
-          </div>
+            {% endif %} {% if category == 'error' %}
+            <div class="alert alert-danger" role="alert">
+                <center>
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </center>
+            </div>
+            {% endif %} {% endfor %} {% endif %} {% endwith%}
+
+            <!-- End Alerts -->
         </div>
+        <br>
 
-        <div class="row">
-          <div class="col-md-5">
-            <div class="form-group" style="padding-left:1em">
-              <label>Rainfall</label>
-              <div class="input-group">
-                <input type="text" class="form-control" name="Rainfall" />
-                <span class="input-group-addon">mm</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="form-group" style="padding-left:1em">
-              <label>Maximum Temperature:</label>
-              <div class="input-group">
-                <input type="text" class="form-control" name="MaximumTemperature" />
-                <span class="input-group-addon">c</span>
-              </div>
-            </div>
-          </div>
+        <div class="container">
+            <form id="containerForm" class="form-horizontal" method="POST" action="/predict">
+                <!-- Input Data -->
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group" style="padding-left:1em">
+                            <label for="DistrictName">Choose a District:</label>
+                            <select name="DistrictName" id="DistrictName" class="form-control">
+                                <option value="[1,0,0,0,0]">Badulla</option>
+                                <option value="[0,1,0,0,0]">Kandy</option>
+                                <option value="[0,0,1,0,0]">Matale</option>
+                                <option value="[0,0,0,1,0]">Nuwaraeliya</option>
+                                <option value="[0,0,0,0,1]">Ratnapura</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="form-group" style="padding-left:1em">
+                            <label for="VegetableType">Choose a vegetable type:</label>
+                            <select name="VegetableType" id="VegetableType" class="form-control">
+                                  <option value="[1,0,0,0,0]">Beans</option>
+                                  <option value="[0,1,0,0,0]">Beetroot</option>
+                                  <option value="[0,0,1,0,0]">Carrot</option>
+                                  <option value="[0,0,0,1,0]">Knohkhol</option>
+                                  <option value="[0,0,0,0,1]">Leeks</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group" style="padding-left:1em">
+                            <label>Rainfall</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="Rainfall" />
+                                <span class="input-group-addon">mm</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group" style="padding-left:1em">
+                            <label>Maximum Temperature:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="MaximumTemperature" />
+                                <span class="input-group-addon">c</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group" style="padding-left:1em">
+                            <label>Minimum Temperature:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="MinimumTemperature" />
+                                <span class="input-group-addon">c</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group" style="padding-left:1em">
+                            <label>Relative Humidity:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="RelativeHumidity" />
+                                <span class="input-group-addon">%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Input Data -->
+
+                <!-- Prediction btn -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group" style="padding-left:1em">
+                            <label>Pressure:</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="Pressure" />
+                                <span class="input-group-addon">kPa</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group" style="padding-left:1em">
+                            <label>Predict the values</label>
+                            <input class="btn btn-primary btn-block" type='submit' value='Predict the values'></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Prediction btn -->
+
+                <!-- Result -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group" style="padding-left:1em">
+                            <div class="alert alert-info" role="alert">
+                                <h3>
+                                    Extent: <b>{{extentPrediction}}</b> Ht
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group" style="padding-left:1em">
+                            <div class="alert alert-info" role="alert">
+                                <h3>
+                                    Production: <b>{{predictionProduction}}</b> Mt
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Result -->
+
+            </form>
         </div>
-
-        <div class="row">
-          <div class="col-md-5">
-            <div class="form-group" style="padding-left:1em">
-              <label>Minimum Temperature:</label>
-              <div class="input-group">
-                <input type="text" class="form-control" name="MinimumTemperature" />
-                <span class="input-group-addon">c</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="form-group" style="padding-left:1em">
-              <label>Relative Humidity:</label>
-              <div class="input-group">
-                <input type="text" class="form-control" name="RelativeHumidity" />
-                <span class="input-group-addon">%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- End Input Data -->
-
-        <!-- Prediction btn -->
-        <div class="row">
-          <div class="col-md-5">
-            <div class="form-group" style="padding-left:1em">
-              <label>Pressure:</label>
-              <div class="input-group">
-                <input type="text" class="form-control" name="Pressure" />
-                <span class="input-group-addon">kPa</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="form-group" style="padding-left:1em">
-              <label>Predict the values</label>
-              <input class="btn btn-primary btn-block" type='submit' value='Predict the values'></button>
-            </div>
-          </div>
-        </div>
-        <!-- End Prediction btn -->
-
-        <!-- Result -->
-
-        <div class="row">
-          <div class="col-md-5">
-            <div class="form-group" style="padding-left:1em">
-              <div class="alert alert-info" role="alert">
-                <h3>
-                  Extent: <b>{{extentPrediction}}</b> Ht
-                </h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div class="form-group" style="padding-left:1em">
-              <div class="alert alert-info" role="alert">
-                <h3>
-                  Production: <b>{{predictionProduction}}</b> Mt
-                </h3>
-              </div>
-            </div>
-          </div>
-
-          <!-- End Result -->
-
-      </form>
     </div>
-  </div>
 </div>
 {%endblock%}
