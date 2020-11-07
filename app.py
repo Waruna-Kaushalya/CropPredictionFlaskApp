@@ -124,16 +124,11 @@ def predictCSVFile():
 def show_tables():
         if request.method == 'POST':
             datasetCsv = pd.read_csv('csvResult.csv')
-            print("A")
-            time.sleep(3)
             df = pd.DataFrame(datasetCsv)
-            print("B")
-            time.sleep(2)
             data = datasetCsv
-            time.sleep(1)
-            print("C")
+            time.sleep(2)
             flash('The predicted answer was displayed! ' , 'success')
-            return render_template('multiplepred.html', tables=[df.to_html(classes='data')], titles=df.columns.values)
+            return render_template('multiplepred.html', tables=[df.to_html(classes='data')])
     
 
 # upload csv data for single prediction
