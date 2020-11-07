@@ -123,13 +123,19 @@ def predictCSVFile():
 @app.route("/showcsvtables", methods=['POST'])
 def show_tables():
         if request.method == 'POST':
-            datasetCsv = pd.read_csv('csvResult.csv')
-            df = pd.DataFrame(datasetCsv)
-            data = datasetCsv
-            time.sleep(2)
-            flash('The predicted answer was displayed! ' , 'success')
-            return render_template('multiplepred.html', tables=[df.to_html(classes='data')])
-    
+            try:
+                datasetCsv = pd.read_csv('csvResult.csv')
+                time.sleep(2)
+                df = pd.DataFrame(datasetCsv)
+                time.sleep(2)
+            except:
+                flash('Table cannot be show' , 'error')
+                return render_template('multiplepred.html')
+            else:
+                flash('The predicted answer was displayed! ' , 'success')
+                return render_template('multiplepred.html', tables=[df.to_html(classes='datasetCsv')])
+
+  
 
 # upload csv data for single prediction
 @app.route('/upload',methods=['POST'])
