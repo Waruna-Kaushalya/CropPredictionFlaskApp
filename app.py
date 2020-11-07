@@ -125,9 +125,11 @@ def show_tables():
         if request.method == 'POST':
             try:
                 datasetCsv = pd.read_csv('csvResult.csv')
+                time.sleep(3)
                 df = pd.DataFrame(datasetCsv)
-                data = datasetCsv
                 time.sleep(2)
+                data = datasetCsv
+                time.sleep(1)
             except ValueError:
                 flash('Data cannot display!' , 'error')
                 return render_template('multiplepred.html')
