@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styleValidator.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/tablestyle.css') }}">
 
     <title>Upcountry vegetable crop yield prediction</title>
 
@@ -24,6 +25,11 @@
     <!-- progress bar -->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+    <!--  -->
+
+
+    <!--  -->
+
     <!--  -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -62,6 +68,7 @@
         </div>
     </div>
     <!-- End waiting -->
+
     <!-- waiting -->
     <div id="loading" style="display:none;">
         <div class="modal fade bd-example-modal-sm" id="loadingModel" tabindex="-1" role="dialog"
@@ -77,6 +84,29 @@
                     <div class="modal-body">
                         <center>
                             <img src="/static/pics/prowlgif.gif" height="150" />
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End waiting -->
+
+    <!-- waiting -->
+    <div id="showing" style="display:none;">
+        <div class="modal fade bd-example-modal-sm" id="showResult" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <center>
+                            <h3 class="modal-title" id="exampleModalLongTitle">Result is preparing!
+                        </center>
+                        </h3>
+                    </div>
+                    <div class="modal-body">
+                        <center>
+                            <img src="/static/pics/cube.gif" height="150" />
                         </center>
                     </div>
                 </div>

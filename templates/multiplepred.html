@@ -83,26 +83,27 @@
             <hr>
 
             <!-- Model train -->
+            <!-- Show the result -->
             <div class="row">
                 <div class="form-group">
                     <form id="containerForm" class="form-horizontal" method="POST" action="/predictcsvfile">
                         <div class="col-md-3">
-                            <label>Make the prediction</label>
+                            <label>Get the result</label>
                         </div>
 
                         <div class="col-md-2">
-                            <input class='btn btn-primary btn-block' type='submit' value='Predict the values'
-                                onclick="$('#loading').show();" data-toggle="modal" data-target="#loadingModel">
+                            <input class='btn btn-primary btn-block' type='submit' value='Show result'
+                                onclick="$('#showing').show();" data-toggle="modal" data-target="#showResult">
                         </div>
                     </form>
                 </div>
             </div>
             <!-- End Model train -->
 
-            <hr>
+          
 
             <!-- Show the result -->
-            <div class="row">
+            <!-- <div class="row">
                 <div class="form-group">
 
                     <form action="/showcsvtables" method="POST" enctype="multipart/form-data">
@@ -117,12 +118,10 @@
                     </form>
 
                 </div>
-            </div>
-            <br>
-            <label>Result of prediction</label>
-            <br>
-            <br>
-
+            </div> -->
+            
+            <hr>
+   
             <!-- {% for table in tables %}
             {{ table|safe }}
             {% endfor %} -->
@@ -131,7 +130,7 @@
                 <thead>
                     <tr>
                         {% for col in colnames %}
-                        <th>{{ col }}</th>
+                        <th>{{ col | safe }}</th>
                         {% endfor %}
                     </tr>
                 </thead>
@@ -139,7 +138,7 @@
                     {% for record in records %}
                     <tr>
                         {% for col in colnames %}
-                        <td>{{ record[col] }}</td>
+                        <td>{{ record[col] | safe}}</td>
                         {% endfor %}
                     </tr>
                     {% endfor %}
