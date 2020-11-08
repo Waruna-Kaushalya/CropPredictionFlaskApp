@@ -10,7 +10,6 @@ from sklearn.metrics import r2_score
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
-
 import config
 
 def trainModel():
@@ -49,10 +48,8 @@ def trainModel():
     # Fitting Regression to the Training set for Production Model
     regressorProduction = RandomForestRegressor(n_estimators=20, random_state=0)
     modelProduction = regressorProduction.fit(XZ_train, z_train)
-
     # Predicting the Test set results of Extent model
     y_pred = modelExtent.predict(X_test)
-
     # Predicting the Test set results of Production model
     z_pred = modelProduction.predict(XZ_test)
 

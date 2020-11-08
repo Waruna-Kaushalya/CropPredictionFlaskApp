@@ -7,7 +7,6 @@ import json
 from werkzeug.utils import secure_filename
 import boto3
 import time
-# import tablib
 import os
 import config
 
@@ -55,6 +54,7 @@ def predict():
                 Pressure = float(request.form['Pressure'])
                 District = request.form['DistrictName']
                 Vegetable = request.form['VegetableType']
+
                 DistrictArr = json.loads(District)
                 VegetableArr = json.loads(Vegetable)
                 predArr = [Rainfall,MaximumTemperature,MinimumTemperature,RelativeHumidity,Pressure]
