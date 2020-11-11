@@ -1,57 +1,53 @@
 {%extends "layout.html"%} {%block content%}
 
 <div class="topnav" id="myTopnav">
-
     <a href="{{ url_for('home')}}">Single Prediction</a>
     <a href="{{ url_for('multiplepred')}}">Multiple Prediction</a>
     <a href="{{ url_for('trainmodel')}}">Model Train</a>
     <a href="{{ url_for('about')}}">About VEGEPredictor</a>
     <a href="{{ url_for('howvegepredictorwork')}}" class="active">How VEGEPredictor Work</a>
 
-
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
 </div>
 <div class="about">
-
     <div class="container">
-
         <!--  -->
 
         <div class="form-group">
             <div class="col-md-10">
                 <div align="justify">
-                    <br>
+                    <br />
                     <h3>
-                        <b>
-                            Import Data and Train the Model
-                        </b>
+                        <b> Import Data and Train the Model </b>
                     </h3>
                     <h4>
-                        Import the data required to train the model into the application in CSV format. (Enter data for at least ten years.)
+                        Import the data required to train the model into the application in
+                        CSV format. (Enter data for at least ten years.)
                     </h4>
                 </div>
                 <div align="center">
-                    <img src="/static/pics/0SS.png" width="700" border="1px">
+                    <img src="/static/pics/0SS.png" width="700" border="1px" />
                 </div>
-                <br>
+                <br />
 
                 <div align="justify">
-                    <br>
-                    <h4>
-                        A format of the CSV type data to be entered.
-                    </h4>
+                    <br />
+                    <h4>A format of the CSV type data to be entered.</h4>
                 </div>
                 <div align="center">
-                    <img src="/static/pics/1SS.png" width="700">
+                    <img src="/static/pics/1SS.png" width="700" />
                 </div>
-                <br>
+                <br />
 
                 <!-- Alerts -->
                 <div class="alert alert-warning" role="alert">
                     <center>
-                        How to create <a href="https://www.computerhope.com/issues/ch001356.htm" class="alert-link" target="_blank">Create</a> a CSV file
+                        How to create
+                        <a href="https://www.computerhope.com/issues/ch001356.htm" class="alert-link"
+                            target="_blank">Create</a>
+                        a CSV file
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -59,137 +55,137 @@
                 </div>
 
                 <div align="justify">
-                    <br>
+                    <br />
                     <h4>
-                        First, select the "choose file" button and then the CSV file and click the "upload" button.
+                        First, select the "choose file" button and then the CSV file and
+                        click the "upload" button.
                     </h4>
                 </div>
                 <div align="center">
-                    <img src="/static/pics/11SS.png" width="700">
-                    <br>
-                    <br>
-                    <img src="/static/pics/2SS.png" width="700">
-                    <br>
-                    <br>
-                    <img src="/static/pics/12SS.png" width="700">
+                    <img src="/static/pics/11SS.png" width="700" />
+                    <br />
+                    <br />
+                    <img src="/static/pics/2SS.png" width="700" />
+                    <br />
+                    <br />
+                    <img src="/static/pics/12SS.png" width="700" />
                 </div>
-                <br>
+                <br />
 
                 <div align="justify">
-                    <br>
+                    <br />
+                    <h4>It will take some time to upload the file.</h4>
+                </div>
+                <div align="center">
+                    <img src="/static/pics/3SS.png" width="700" />
+                </div>
+                <br />
+
+                <div align="justify">
+                    <br />
                     <h4>
-                        It will take some time to upload the file.
+                        Then click on the "Train model" button. It takes some time for the
+                        model to train.
                     </h4>
                 </div>
                 <div align="center">
-                    <img src="/static/pics/3SS.png" width="700">
-                </div>
-                <br>
-
-                <div align="justify">
-                    <br>
-                    <h4>
-                        Then click on the "Train model" button. It takes some time for the model to train.
-                    </h4>
-                </div>
-                <div align="center">
-                    <img src="/static/pics/9SS.png" width="700">
+                    <img src="/static/pics/9SS.png" width="700" />
                 </div>
 
                 <div align="justify">
-                    <br>
+                    <br />
                     <h4>
-                        After the model trained you can go to "Single prediction" and predict values.
+                        After the model trained you can go to "Single prediction" and
+                        predict values.
                     </h4>
                 </div>
-                <br>
+                <br />
 
-                <hr>
+                <hr />
                 <!--  -->
 
                 <div align="justify">
                     <h3>
-                        <b>
-                            Single prediction
-                        </b>
+                        <b> Single prediction </b>
                     </h3>
                     <h4>
-                        Enter the data needed to predict here. Include the average value of two months' weather, as it usually takes about two months for an up-country vegetable to harvest.
+                        Enter the data needed to predict here. Include the average value of
+                        two months' weather, as it usually takes about two months for an
+                        up-country vegetable to harvest.
                     </h4>
                 </div>
                 <div align="center">
-                    <img src="/static/pics/4SS.png" width="700" border="1px">
+                    <img src="/static/pics/4SS.png" width="700" border="1px" />
                 </div>
-                <br>
+                <br />
 
                 <div align="justify">
-                    <br>
+                    <br />
                     <h4>
-                        Then click on the "Predict the value" button to prediction. The result related to the prediction is displayed as follows.
+                        Then click on the "Predict the value" button to prediction. The
+                        result related to the prediction is displayed as follows.
                     </h4>
                 </div>
                 <div align="center">
-                    <img src="/static/pics/5SS.png" width="700">
+                    <img src="/static/pics/5SS.png" width="700" />
                 </div>
-                <br>
+                <br />
 
-                <hr>
+                <hr />
                 <!--  -->
                 <div align="justify">
                     <h3>
-                        <b>
-                            Multiple predictions
-                        </b>
+                        <b> Multiple predictions </b>
                     </h3>
                     <h4>
-                        Here the possibility of making several predictions at once is far from over. Enter a data set in CSV file format. Enter the average value of two months' weather as it usually takes about two months for a Kandyan vegetable to harvest.
+                        Here the possibility of making several predictions at once is far
+                        from over. Enter a data set in CSV file format. Enter the average
+                        value of two months' weather as it usually takes about two months
+                        for a Kandyan vegetable to harvest.
                     </h4>
                 </div>
                 <div align="center">
-                    <img src="/static/pics/15SS.png" width="700" border="1px">
+                    <img src="/static/pics/15SS.png" width="700" border="1px" />
                 </div>
-                <br>
+                <br />
 
                 <div align="justify">
-                    <br>
+                    <br />
                     <h4>
-                        First, select the "choose file" button and then the CSV file and click the "upload" button.
+                        First, select the "choose file" button and then the CSV file and
+                        click the "upload" button.
                     </h4>
                 </div>
                 <div align="center">
-                    <img src="/static/pics/11SS.png" width="700">
-                    <br>
-                    <br>
-                    <img src="/static/pics/7SS.png" width="700">
+                    <img src="/static/pics/11SS.png" width="700" />
+                    <br />
+                    <br />
+                    <img src="/static/pics/7SS.png" width="700" />
                 </div>
-                <br>
-
+                <br />
 
                 <div align="justify">
-                    <br>
-                    <h4>
-                        Then click on the "Show result" button.
-                    </h4>
+                    <br />
+                    <h4>Then click on the "Show result" button.</h4>
                 </div>
 
-
                 <div align="center">
-                    <img src="/static/pics/16SS.png" width="700">
-                    <br>
+                    <img src="/static/pics/16SS.png" width="700" />
+                    <br />
                 </div>
                 <div align="justify">
-                    <br>
+                    <br />
                     <h4>
-                        The result related to the prediction is displayed in a table as follows.
+                        The result related to the prediction is displayed in a table as
+                        follows.
                     </h4>
                 </div>
 
-
                 <div align="center">
-                    <img src="/static/pics/17SS.png" width="700">
-                    <br>
-                    <br>
-                    <img src="/static/pics/18SS.png" width="700">
+                    <img src="/static/pics/17SS.png" width="700" />
+                    <br />
+                    <br />
+                    <img src="/static/pics/18SS.png" width="700" />
                 </div>
             </div>
         </div>

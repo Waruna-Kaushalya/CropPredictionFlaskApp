@@ -8,7 +8,6 @@
     <a href="{{ url_for('about')}}">About VEGEPredictor</a>
     <a href="{{ url_for('howvegepredictorwork')}}">How VEGEPredictor Work</a>
 
-
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
@@ -17,11 +16,13 @@
 
 <div class="multiplepred">
     <div class="container">
-
         <div class="col-md-10">
             <!-- Flash alert -->
             <h3>Performing a series of predictions simultaneously</h3>
-            <hr> {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} {% if category == 'success' %}
+            <hr />
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %} {% if category ==
+      'success' %}
             <div class="alert alert-success mb-3" role="alert">
                 <center>
                     {{ message }}
@@ -38,36 +39,35 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </center>
-
             </div>
             {% endif %} {% endfor %} {% endif %} {% endwith%}
 
             <!-- End Flash alert -->
-
         </div>
 
-        <br>
+        <br />
         <div class="container">
-
             <!-- File upload -->
             <div class="row">
                 <div class="form-group">
                     <form action="/csvimport" method="POST" enctype="multipart/form-data">
                         <div class="col-md-3">
                             <label>Choose a file to upload</label>
-                            <br>
-                            <input type="file" name="file" value="file">
+                            <br />
+                            <input type="file" name="file" value="file" />
                         </div>
 
                         <div class="col-md-2">
-                            <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block" onclick="$('#uploading').show();" data-toggle="modal" data-target="#uploadingModel"> {{msg}}
+                            <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block"
+                                onclick="$('#uploading').show();" data-toggle="modal" data-target="#uploadingModel" />
+                            {{msg}}
                         </div>
                     </form>
                 </div>
             </div>
             <!-- End File upload -->
 
-            <hr>
+            <hr />
 
             <!-- Model train -->
             <!-- Show the result -->
@@ -79,7 +79,8 @@
                         </div>
 
                         <div class="col-md-2">
-                            <input class='btn btn-primary btn-block' type='submit' value='Show result' onclick="$('#showing').show();" data-toggle="modal" data-target="#showResult">
+                            <input class="btn btn-primary btn-block" type="submit" value="Show result"
+                                onclick="$('#showing').show();" data-toggle="modal" data-target="#showResult" />
                         </div>
                     </form>
                 </div>
@@ -87,7 +88,7 @@
             <!-- End Model train -->
             <!-- Show the result -->
 
-            <hr>
+            <hr />
 
             <table border="1">
                 <thead>

@@ -2,13 +2,11 @@
 
 <!-- Menu -->
 <div class="topnav" id="myTopnav">
-
     <a href="{{ url_for('home')}}">Single Prediction</a>
     <a href="{{ url_for('multiplepred')}}">Multiple Prediction</a>
     <a href="{{ url_for('trainmodel')}}" class="active">Model Train</a>
     <a href="{{ url_for('about')}}">About VEGEPredictor</a>
     <a href="{{ url_for('howvegepredictorwork')}}">How VEGEPredictor Work</a>
-
 
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -16,16 +14,16 @@
 </div>
 <!-- End Menu -->
 
-
 <div class="trainmodel">
     <div class="container">
-
         <div class="col-md-10">
             <h3>Import Data and Train the Model</h3>
-            <hr>
+            <hr />
 
             <!-- Flash alert -->
-            {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} {% if category == 'success' %}
+            {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %} {% if category ==
+      'success' %}
             <div class="alert alert-success mb-3" role="alert">
                 <center>
                     {{ message }}
@@ -37,7 +35,9 @@
             {% endif %} {% if category == 'trained' %}
             <div class="alert alert-warning" role="alert">
                 <center>
-                    Now you can go to <a href="{{ url_for('home')}}" class="alert-link">Single Prediction</a> and make a prediction!
+                    Now you can go to
+                    <a href="{{ url_for('home')}}" class="alert-link">Single Prediction</a>
+                    and make a prediction!
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -54,30 +54,29 @@
             </div>
             {% endif %} {% endfor %} {% endif %} {% endwith%}
             <!-- End Flash alert -->
-
         </div>
 
-        <br>
+        <br />
 
         <div class="container">
-
             <!-- File upload -->
             <div class="row">
                 <div class="form-group">
                     <form action="/upload" method="POST" enctype="multipart/form-data">
                         <div class="col-md-3">
                             <label>Choose a file to upload</label>
-                            <input type="file" name="file" value="file">
+                            <input type="file" name="file" value="file" />
                         </div>
                         <div class="col-md-2">
-                            <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block" onclick="$('#uploading').show();" data-toggle="modal" data-target="#uploadingModel">
+                            <input type="submit" name="upload" value="Upload" class="btn btn-success btn-block"
+                                onclick="$('#uploading').show();" data-toggle="modal" data-target="#uploadingModel" />
                         </div>
                     </form>
                 </div>
             </div>
             <!-- End File upload -->
 
-            <hr>
+            <hr />
 
             <!-- Model train -->
             <div class="row">
@@ -88,14 +87,13 @@
                         </div>
 
                         <div class="col-md-2">
-                            <input class='btn btn-primary btn-block' type='submit' value='Train model' onclick="$('#loading').show();" data-toggle="modal" data-target="#loadingModel">
+                            <input class="btn btn-primary btn-block" type="submit" value="Train model"
+                                onclick="$('#loading').show();" data-toggle="modal" data-target="#loadingModel" />
                         </div>
-
                     </form>
                 </div>
             </div>
             <!-- End Model train -->
-
         </div>
     </div>
 </div>
