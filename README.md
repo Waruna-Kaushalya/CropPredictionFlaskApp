@@ -7,4 +7,3 @@ Flask Web Application For Crop Yield Prediction
 - Random Forest Algorithm
 - Multiple Linear Regression Algorithm
 
-https://croppredictionflaskapp.herokuapp.com
