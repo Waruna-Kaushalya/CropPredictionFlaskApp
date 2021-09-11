@@ -1,5 +1,5 @@
 aiobotocore==1.1.2
-aiohttp==3.6.3
+aiohttp==3.7.4
 aioitertools==0.7.0
 alabaster==0.7.12
 anaconda-client==1.7.2
@@ -27,7 +27,7 @@ backports.weakref==1.0.post1
 beautifulsoup4==4.9.1
 bitarray @ file:///opt/concourse/worker/volumes/live/9034c98d-f3e3-4444-48f0-092269ed9919/volume/bitarray_1594753940633/work
 bkcharts==0.2
-bleach==3.1.5
+bleach==3.3.0
 bokeh @ file:///opt/concourse/worker/volumes/live/eb4a1f42-db74-4fc3-7f34-0189ef49c1a1/volume/bokeh_1593187606262/work
 boto==2.49.0
 boto3==1.15.18
@@ -46,7 +46,7 @@ conda-build==3.18.11
 conda-package-handling==1.7.0+0.g7c4a471.dirty
 conda-verify==3.4.2
 contextlib2==0.6.0.post1
-cryptography==2.9.2
+cryptography==3.2
 cycler==0.10.0
 Cython @ file:///opt/concourse/worker/volumes/live/6158b663-a4ca-4e19-7e05-8807e4f79146/volume/cython_1594835048880/work
 cytoolz==0.10.1
@@ -87,7 +87,7 @@ isort==4.3.21
 itsdangerous==1.1.0
 jdcal==1.4.1
 jedi @ file:///opt/concourse/worker/volumes/live/1c5c293b-9147-4b4b-5a7f-d3f5eddb8470/volume/jedi_1592841952519/work
-Jinja2==2.11.2
+Jinja2==2.11.3
 jmespath==0.10.0
 joblib @ file:///tmp/build/80754af9/joblib_1594236160679/work
 json5==0.9.5
@@ -96,7 +96,7 @@ jupyter==1.0.0
 jupyter-client @ file:///tmp/build/80754af9/jupyter_client_1594826976318/work
 jupyter-console==6.1.0
 jupyter-core==4.6.3
-jupyterlab==2.1.5
+jupyterlab==2.2.10
 jupyterlab-server @ file:///tmp/build/80754af9/jupyterlab_server_1594164409481/work
 keyring @ file:///opt/concourse/worker/volumes/live/f2a8edc0-64b5-40f0-5d81-bbd31149cbe1/volume/keyring_1593109772159/work
 kiwisolver==1.2.0
@@ -124,7 +124,7 @@ nbformat==5.0.7
 networkx @ file:///tmp/build/80754af9/networkx_1594377231366/work
 nltk @ file:///tmp/build/80754af9/nltk_1592496090529/work
 nose @ file:///opt/concourse/worker/volumes/live/a029938e-1732-4cd8-5b98-0542283d158b/volume/nose_1594377915100/work
-notebook==6.0.3
+notebook==6.4.1
 numba==0.50.1
 numexpr==2.7.1
 numpy==1.18.5
@@ -159,7 +159,7 @@ pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
 pycurl==7.43.0.5
 pydocstyle @ file:///tmp/build/80754af9/pydocstyle_1592848020240/work
 pyflakes==2.2.0
-Pygments==2.6.1
+Pygments==2.7.4
 pylint @ file:///opt/concourse/worker/volumes/live/0a2a544e-806a-4267-74b2-a3f95578c3f2/volume/pylint_1592498630326/work
 pyodbc===4.0.0-unsupported
 pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1594392929924/work
@@ -174,7 +174,7 @@ python-language-server @ file:///opt/concourse/worker/volumes/live/5f0313b4-ff69
 python-socketio==4.6.0
 pytz==2020.1
 PyWavelets==1.1.1
-PyYAML==5.3.1
+PyYAML==5.4
 pyzmq==19.0.1
 QDarkStyle==2.8.1
 QtAwesome==0.7.2
@@ -183,7 +183,7 @@ QtPy==1.9.0
 regex @ file:///opt/concourse/worker/volumes/live/93a9c6ee-7d77-4975-4d26-29732dd5574b/volume/regex_1593435592218/work
 requests @ file:///tmp/build/80754af9/requests_1592841827918/work
 rope==0.17.0
-rsa==4.5
+rsa==4.7
 Rtree==0.9.4
 ruamel-yaml==0.15.87
 s3fs==0.5.1
@@ -227,7 +227,7 @@ traitlets==4.3.3
 typing-extensions @ file:///tmp/build/80754af9/typing_extensions_1592847887441/work
 ujson==1.35
 unicodecsv==0.14.1
-urllib3==1.25.9
+urllib3==1.26.5
 virtualenv==20.0.35
 waitress==1.4.4
 watchdog @ file:///opt/concourse/worker/volumes/live/cc0ee7bb-1065-44c4-5867-0fd5d13729e0/volume/watchdog_1593447373245/work
