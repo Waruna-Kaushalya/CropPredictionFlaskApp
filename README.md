@@ -7,3 +7,5 @@ Flask Web Application For Crop Yield Prediction
 - Random Forest Algorithm
 - Multiple Linear Regression Algorithm
 
+#### How to run project
+- run command "flask run"
